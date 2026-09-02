@@ -1,0 +1,140 @@
+@use '_variables' as *;
+
+// FLEX
+@mixin flexCenter($direction: row,
+    $justify: center,
+    $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+// HOVER PADRÃO
+@mixin hoverDefault($translate: $translate-y-hover-5, $shadow: $shadow-hover) {
+    transition: $transition-default;
+    &:hover {
+        transform: $translate;
+        box-shadow: $shadow;
+    }
+}
+
+// GRID RESPONSIVO
+@mixin grid($min-width: 250px, $gap: $space-md, $padding: 0) {
+    display: grid;
+    grid-template-columns:repeat(auto-fill,minmax(min($min-width, 100%), 1fr));
+    gap: $gap;
+    padding: $padding;
+}
+
+
+//grid de colunas
+@mixin gridCol($gap: $space-md, $padding: 0) {
+    display: grid;
+    grid-template-columns:repeat(3,1fr);
+    gap: $gap;
+    padding: $padding;
+}
+
+@mixin gridColDef($col:3, $fr:1,$gap: $space-md, $padding: 0) {
+    display: grid;
+    grid-template-columns:repeat($col,$fr);
+    gap: $gap;
+    padding: $padding;
+}
+
+// CARD PADRÃO DA PIZZARIA
+@mixin card {
+    background: $bg-secondary;
+    border: $border-sm solid $border-color;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-card;
+    padding: $space-lg;
+    transition: $transition-default;
+    &:hover {
+        transform: $translate-y-hover;
+        box-shadow: $shadow-hover;
+    }
+}
+
+// BOTÃO VERDE ITALIANO
+@mixin btnPrimary {
+    background: $btn-primary-bg;
+    color: $text-light;
+    border: none;
+    border-radius: $radius-md;
+    padding: $space-sm $space-lg;
+    cursor: pointer;
+    transition: $transition-default;
+    &:hover {
+        background: $btn-primary-hover;
+    }
+}
+
+// BOTÃO VERMELHO ITALIANO
+@mixin btnSecondary {
+    background: $btn-secondary-bg;
+    color: $text-light;
+    border: none;
+    border-radius: $radius-md;
+    padding: $space-sm $space-lg;
+    cursor: pointer;
+    transition: $transition-default;
+    &:hover {
+        background: $btn-secondary-hover;
+    }
+}
+
+// TÍTULOS ITALIANOS
+@mixin title {
+    font-family: $font-heading;
+    font-weight: 700;
+    color: $text-heading;
+    line-height: 1.2;
+}
+
+// ÍCONES
+@mixin icon-base($size,
+    $color: currentColor) {
+    width: $size;
+    height: $size;
+    color: $color;
+    display: inline-block;
+}
+
+// CONTEINER PADRÃO
+@mixin container($max: $container-lg) {
+    width: 100%;
+    max-width: $max;
+    margin: 0 auto;
+}
+
+// RESPONSIVIDADE
+@mixin mobile {
+    @media (max-width: $mobile) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media (max-width: $laptop) {
+        @content;
+    }
+}
+
+@mixin desktop{
+    @media (max-width: $desktop){
+        @content;
+    }
+}
+@mixin wide{
+    @media (max-width: $wide){
+        @content;
+    }
+}
