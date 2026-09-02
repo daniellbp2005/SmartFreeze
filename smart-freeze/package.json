@@ -12,11 +12,5 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "sass": "^1.103.1"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "typescript": "^5"
   }
 }
