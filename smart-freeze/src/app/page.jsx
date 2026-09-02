@@ -1,69 +1,54 @@
-import Image from "next/image";
-import styles from "./page.module.scss";
+import "./page.module.scss";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.js</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <div className="body">
+        <div className="titulo">
+          <h1> Geladeira de Usuário </h1>
+          <img src="https://placehold.co/60x60" alt="" className="perfil" />
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="filtro">
+          <p>Filtrar por: </p>
+          <button type="button">Laticínios</button>
+          <button type="button">Frutas</button>
+          <button type="button">Carnes</button>
+          <button type="button">Bebidas</button>
+          <button type="button">Outros</button>
         </div>
-      </main>
-    </div>
+        <div className="grid_itens">
+          <div className="card_itens">
+            <img src="https://placehold.co/50x50" alt="" />
+            <h3 className="Item_nome">Maçãs</h3>
+            <p className="Item_Qtd">5 unidades</p>
+          </div>
+          <div className="card_itens">
+            <img src="https://placehold.co/50x50" alt="" />
+            <h3 className="Item_nome">Leite</h3>
+            <p className="Item_Qtd">2 Caixas</p>
+          </div>
+          <div className="card_itens">
+            <img src="https://placehold.co/50x50" alt="" />
+            <h3 className="Item_nome">Queijo</h3>
+            <p className="Item_Qtd">1 Unidade</p>
+          </div>
+          <div className="card_itens">
+            <img src="https://placehold.co/50x50" alt="" />
+            <h3 className="Item_nome">Picanha</h3>
+            <p className="Item_Qtd">1 Unidade</p>
+          </div>
+          <div className="card_itens">
+            <img src="https://placehold.co/50x50" alt="" />
+            <h3 className="Item_nome">Pizza</h3>
+            <p className="Item_Qtd">1 Unidade</p>
+          </div>
+          <div className="card_itens">
+            <img src="https://placehold.co/70x70" alt="" />
+            <p className="Item_Add">Adicionar Mais</p>
+          </div>
+        </div>
+      </div>
+      {/* body */}
+    </>
   );
 }
