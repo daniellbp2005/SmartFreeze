@@ -1,0 +1,34 @@
+@use '../../styles/mixins' as mixins;
+@use '../../styles/variables';
+
+@media (max-width: 768px) {
+    .header {
+        background-color: variables.$bg-secondary;
+        width: 100%;
+        height: auto;
+        padding: variables.$space-sm;
+        @include mixins.flexCenter(row, space-between);
+
+        .logoContainer {
+            @include mixins.flexCenter(row, flex-start);
+            gap: variables.$space-sm;
+
+            .logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .titulo {
+                font-size: variables.$fs-text;
+                color: variables.$cr-primary;
+            }
+        }
+
+        .perfil {
+            width: 64px;
+            height: 64px;
+            stroke: variables.$cr-primary;
+            font-family: variables.$font-body;
+        }
+    }
+}

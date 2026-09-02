@@ -1,9 +1,11 @@
 // cor de fundo
-$bg-primary:#0e0e0e;
-$bg-secondary: #161616;
-$bg-borda: #2a2a2a;        
+$bg-primary:#171810;
+$bg-secondary: #2a2a2a;
+$bg-terciaria: #222222;  
+$bg-borda: #222222;      
 
 //Cores
+$cr-primary: #fff;
 $cr-acao: #007bff;
 $cr-danger: #ff3c00;
 $cr-acesso: #28a745;
@@ -74,7 +76,7 @@ $container-lg: 1280px;
 $container-xl: 1440px;
 
 // breakpoints para o projeto
-$mobile: 480px;
+$mobile: 390px;
 $tablet: 780px;
 $laptop: 1024px;
 $desktop: 1280px;
