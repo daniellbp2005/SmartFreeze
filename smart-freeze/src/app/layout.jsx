@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Open_Sans, Montserrat} from "next/font/google";
 import "./globals.scss";
 import Header from "@/components/Header/";
 import Footer from "@/components/Footer";
@@ -14,9 +14,23 @@ const geistMono = Geist_Mono({
 });
 
 const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
+  subsets: ['latin'],
+  weight: ['400', '700'],
+})
+
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+})
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+})
+// const inter = Inter({
+//   variable: "--font-inter",
+//   subsets: ["latin"],
+// });
 
 export const metadata = {
   title: "Create Next App",
@@ -25,10 +39,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${inter.variable}`}>
-      <Header/>
-      <body>{children}</body>
-      <Footer />
+    <html lang="pt-br" className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${openSans.variable} ${montserrat.variable}`}>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

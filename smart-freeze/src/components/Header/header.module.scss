@@ -19,8 +19,10 @@
             }
 
             .titulo {
-                font-size: variables.$fs-text;
+                font-size: variables.$fs-subtitle;
                 color: variables.$cr-primary;
+                font-family: variables.$font-body;
+                letter-spacing: 0.5px;
             }
         }
 
@@ -28,7 +30,14 @@
             width: 64px;
             height: 64px;
             stroke: variables.$cr-primary;
-            font-family: variables.$font-body;
+            padding: variables.$space-sm;
+            // font-family: variables.$font-body;
+            svg{
+                padding: variables.$space-xs;
+                width: 100%;
+                height: 100%;
+                stroke: variables.$cr-primary;
+            }
         }
     }
 }

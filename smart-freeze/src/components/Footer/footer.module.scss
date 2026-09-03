@@ -1,0 +1,56 @@
+@use '../../styles/mixins' as mixins;
+@use '../../styles/variables';
+
+@media(max-width: 768px) {
+    .addProduto{
+        position: fixed;
+        bottom: 64px;
+        left: 49%;
+        width: 95%;
+        margin: variables.$space-sm;
+        transform: translateX(-50%);
+        background-color: variables.$cr-acao;
+        color: variables.$cr-primary;
+        padding: calc(variables.$space-sm + 3px) variables.$space-lg;
+        border-radius: variables.$radius-md;
+        border: none;
+        cursor: pointer;
+        font-size: variables.$fs-subtitle-sub;
+        font-weight: 500;
+        font-family: variables.$font-body;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .tabBar {
+        width: 100%;
+        height: 64px;
+        background-color: variables.$bg-secondary;
+        @include mixins.flexCenter(row, space-between);
+        padding: variables.$space-md variables.$space-lg;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+
+        .col{
+            @include mixins.flexCenter(column, center);
+
+            .tabItem{
+                @include mixins.flexCenter(column, center);
+                gap: variables.$space-xs;
+                cursor: pointer;
+
+                svg{
+                    width: 28px;
+                    height: 28px;
+                    stroke: variables.$cr-primary;
+                }
+
+                .tabTitle{
+                    font-size: variables.$fs-small;
+                    font-family: variables.$font-body;
+                    letter-spacing: 0.5px;
+                    color: variables.$cr-primary;
+                }
+            }
+        }
+    }
+}
