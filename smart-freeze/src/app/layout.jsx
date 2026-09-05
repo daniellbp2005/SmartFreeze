@@ -27,10 +27,6 @@ const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['400', '700'],
 })
-// const inter = Inter({
-//   variable: "--font-inter",
-//   subsets: ["latin"],
-// });
 
 export const metadata = {
   title: "Create Next App",

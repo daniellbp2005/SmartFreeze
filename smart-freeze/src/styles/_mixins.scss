@@ -21,8 +21,9 @@
 
 // GRID RESPONSIVO
 @mixin grid($min-width: 250px, $gap: $space-md, $padding: 0) {
+    gap: $gap;
     display: grid;
-    grid-template-columns:repeat(auto-fill,minmax(min($min-width, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min($min-width, 100%), 1fr));
     gap: $gap;
 }
 
