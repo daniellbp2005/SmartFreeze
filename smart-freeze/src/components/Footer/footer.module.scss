@@ -43,8 +43,6 @@
       @include mixins.flexCenter(column, center);
 
       .tabItem {
-        @include mixins.flexCenter(column, center);
-        gap: variables.$space-xs;
         cursor: pointer;
         &:hover {
           .tabTitle,
@@ -52,6 +50,11 @@
             stroke: variables.$cr-vip;
             color: variables.$cr-vip;
           }
+        }
+
+        .tabLink {
+          @include mixins.flexCenter(column, center);
+          gap: variables.$space-xs;
         }
 
         svg {

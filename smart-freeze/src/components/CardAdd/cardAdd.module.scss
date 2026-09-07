@@ -1,0 +1,32 @@
+@use "../../styles/mixins" as mixins;
+@use "../../styles/variables" as variables;
+
+
+.cardAdd {
+    background-color: variables.$bg-secondary;
+    padding: variables.$space-sm;
+    border-radius: variables.$radius-sm;
+    @include mixins.hoverDefault();
+    @include mixins.flexCenter(row, flex-start);
+
+    svg {
+        height: 100%;
+        flex: 1;
+        padding: variables.$space-lg;
+    }
+
+    p {
+        flex: 1;
+        color: variables.$cr-primary;
+        margin: 0 auto;
+        font-family: variables.$font-body;
+        font-size: variables.$fs-subtitle;
+    }
+}
+
+
+@media(max-width: 768px){
+    .cardAdd {
+        display: none
+    }
+}

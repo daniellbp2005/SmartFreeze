@@ -1,4 +1,5 @@
 import styles from "./header.module.scss";
+import Link from "next/link";
 import { Refrigerator, House, Settings, UserRound, CircleUserRound, LogOut} from "lucide-react";
 
 export default function Header() {
@@ -13,10 +14,10 @@ export default function Header() {
         </div>
         
         <ul className={styles.sideBar}>
-          <li className={styles.liSide}><House size={24} /><p>Home</p></li>
-          <li className={styles.liSide}><Refrigerator size={24} /><p>Geladeira</p></li>
-          <li className={styles.liSide}><Settings size={24} /><p>Configurações</p></li>
-          <li className={styles.liSide}><UserRound size={24} /><p>Perfil</p></li>
+          <li className={styles.liSide}><House size={24} /><p><Link href={"/"}>Home</Link></p></li>
+          <li className={styles.liSide}><Refrigerator size={24} /><p><Link href={"/fridger"}>Geladeira</Link></p></li>
+          <li className={styles.liSide}><Settings size={24} /><p><Link href={"/configuracoes"}>Configurações</Link></p></li>
+          <li className={styles.liSide}><UserRound size={24} /><p><Link href={"perfil/"}>Perfil</Link></p></li>
           <li className={styles.liSide}><button className={styles.btnSair}><p>Sair</p> <LogOut size={24} /></button></li>
         </ul>
 
