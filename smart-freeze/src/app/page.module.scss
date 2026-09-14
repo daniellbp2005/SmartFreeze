@@ -2,136 +2,47 @@
 @use "../styles/variables" as variables;
 
 .main {
-  margin-left: variables.$sidebar-width;
-  width: calc(100% - variables.$sidebar-width);
-  height: 100vh;
-  background-color: variables.$bg-primary;
-  padding: variables.$space-lg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background: radial-gradient(circle at bottom center, #8f5959, #8a5b5b, #668a99, #b6ade6);
+  width: 100%;
 
-  .tituloFiltro {
-    margin-top: variables.$space-sm;
-    margin-bottom: variables.$space-md;
-    color: variables.$cr-primary;
-    font-size: variables.$fs-title;
-    text-align: left;
-    width: 100%;
-    font-family: variables.$font-grot;
-    font-weight: 700;
-  }
+  .conteinerLogin {
+    width: 500px;
+    border: 0.5px solid #fff;
+    padding: variables.$space-md;
+    border-radius: variables.$space-md;
 
-  .filtro {
-    @include mixins.flexCenter(row, flex-start);
-    color: variables.$cr-primary;
-    gap: variables.$space-sm;
+    .contentHeader {
+      width: 100%;
+      @include mixins.flexCenter(column, center);
 
-
-    .filtroText {
-      font-size: variables.$fs-subtitle;
-      margin-right: variables.$space-sm;
-      font-family: variables.$font-grot;
-      font-weight: 500;
+      h1 {
+        font-family: variables.$font-grot;
+        font-weight: 100;
+      }
     }
 
-    ul {
-      @include mixins.flexCenter(row, flex-start);
-      gap: variables.$space-sm;
+    .bodyLogin {
+      margin-top: variables.$space-sm;
+      font-family: variables.$font-grot;
 
-      li {
-        font-size: variables.$fs-subtitle-sub;
-        padding: variables.$space-xs calc(variables.$space-sm + 7px);
-        border-radius: variables.$radius-sm;
-        background-color: variables.$cr-acao;
-        border: none;
-        border-radius: variables.$radius-lg;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        font-family: variables.$font-grot;
-        font-weight: 400;
+      .label {
+        font-weight: 500;
+      }
 
-        &:hover {
-          transform: translateY(-3px);
-          box-shadow: variables.$shadow-hover;
-        }
+      .input {
+        border: 0.5px solid #fff;
+        padding: variables.$space-sm variables.$space-md;
+        border-radius: variables.$space-md;
       }
     }
   }
-
-  .section {
-    @include mixins.grid();
-    padding: variables.$space-sm;
-    width: 100%;
-    margin-top: variables.$space-md;
-    color: variables.$cr-primary;
-    grid-auto-flow: row;
-  }
-
 }
 
-@media (max-width: 768px) {
-  .main {
-    margin-left: 0;
-    width: 100%;
-    min-height: 100vh;
-    padding: variables.$space-sm;
-    @include mixins.flexCenter(column, flex-start);
-    background-color: variables.$bg-primary;
-    padding: 0 variables.$space-md 150px;
-
-  }
-
-  .tituloFiltro {
-    margin-top: variables.$space-2xl !important;
-    margin-bottom: 0;
-    margin-top: variables.$space-lg;
-    color: variables.$cr-primary;
-    font-size: variables.$fs-title;
-    text-align: left;
-    width: 100%;
-    font-family: variables.$font-grot;
-    font-weight: 400;
-  }
-
-  .filtro {
-    width: 100%;
-    @include mixins.flexCenter(column, flex-start, none);
-    color: variables.$cr-primary;
-    gap: variables.$space-sm;
-
-    .filtroText {
-      font-size: variables.$fs-subtitle;
-      margin-right: variables.$space-sm;
-      font-family: variables.$font-grot;
-      font-weight: 400;
-    }
-
-    ul {
-      @include mixins.flexCenter(row, flex-start);
-      gap: variables.$space-sm;
-
-      li {
-        font-size: variables.$fs-text;
-        padding: variables.$space-xs calc(variables.$space-sm + 7px);
-        border-radius: variables.$radius-sm;
-        background-color: variables.$cr-acao;
-        border: none;
-        border-radius: variables.$radius-lg;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        font-family: variables.$font-body;
-
-        &:hover {
-          transform: translateY(-3px);
-          box-shadow: variables.$shadow-hover;
-        }
-      }
-    }
-  }
-
-  .section {
-    @include mixins.grid(100%, variables.$space-md, variables.$space-sm);
-    width: 100%;
-    margin-top: variables.$space-md;
-    color: variables.$cr-primary;
-    grid-auto-flow: row !important;
-  }
+.input {
+  width: 100%;
 }
