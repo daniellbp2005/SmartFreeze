@@ -1,54 +1,31 @@
-import "./page.module.scss";
+import styles from "./page.module.scss";
+import { AppleIcon, Trash2, PlusIcon, PlusCircle } from "lucide-react";
+import Card from "@/components/Card";
+import CardAdd from "@/components/CardAdd";
+
 
 export default function Home() {
   return (
     <>
-      <div className="body">
-        <div className="titulo">
-          <h1> Geladeira de Usuário </h1>
-          <img src="https://placehold.co/60x60" alt="" className="perfil" />
+      <main className={styles.main}>
+        <div className={styles.tituloFiltro}>
+          Bem vindo, <span>Gustavo</span>
         </div>
-        <div className="filtro">
-          <p>Filtrar por: </p>
-          <button type="button">Laticínios</button>
-          <button type="button">Frutas</button>
-          <button type="button">Carnes</button>
-          <button type="button">Bebidas</button>
-          <button type="button">Outros</button>
+        <div className={styles.filtro}>
+          <p className={styles.filtroText}>Filtrar Por:</p>
+          <ul>
+            <li>Filtro 1</li>
+            <li>Filtro 2</li>
+            <li>Filtro 3</li>
+          </ul>
         </div>
-        <div className="grid_itens">
-          <div className="card_itens">
-            <img src="https://placehold.co/50x50" alt="" />
-            <h3 className="Item_nome">Maçãs</h3>
-            <p className="Item_Qtd">5 unidades</p>
-          </div>
-          <div className="card_itens">
-            <img src="https://placehold.co/50x50" alt="" />
-            <h3 className="Item_nome">Leite</h3>
-            <p className="Item_Qtd">2 Caixas</p>
-          </div>
-          <div className="card_itens">
-            <img src="https://placehold.co/50x50" alt="" />
-            <h3 className="Item_nome">Queijo</h3>
-            <p className="Item_Qtd">1 Unidade</p>
-          </div>
-          <div className="card_itens">
-            <img src="https://placehold.co/50x50" alt="" />
-            <h3 className="Item_nome">Picanha</h3>
-            <p className="Item_Qtd">1 Unidade</p>
-          </div>
-          <div className="card_itens">
-            <img src="https://placehold.co/50x50" alt="" />
-            <h3 className="Item_nome">Pizza</h3>
-            <p className="Item_Qtd">1 Unidade</p>
-          </div>
-          <div className="card_itens">
-            <img src="https://placehold.co/70x70" alt="" />
-            <p className="Item_Add">Adicionar Mais</p>
-          </div>
-        </div>
-      </div>
-      {/* body */}
+
+        <section className={styles.section}>
+          <Card />
+          <Card />
+          <CardAdd />
+        </section>
+      </main>
     </>
   );
 }
