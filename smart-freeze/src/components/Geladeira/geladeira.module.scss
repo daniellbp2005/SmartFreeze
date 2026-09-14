@@ -23,12 +23,13 @@
         h3 {
             font-weight: 500;
             font-size: variables.$fs-subtitle;
-            font-family: variables.$font-body;
+            font-family: variables.$font-grot;
         }
 
         p {
             font-size: variables.$fs-text;
-            font-family: variables.$font-body;
+           font-family: variables.$font-grot;
+           font-weight: 300;
         }
     }
 

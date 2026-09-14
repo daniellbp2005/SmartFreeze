@@ -9,14 +9,14 @@
   padding: variables.$space-lg;
 
   .tituloFiltro {
-
     margin-top: variables.$space-sm;
     margin-bottom: variables.$space-md;
     color: variables.$cr-primary;
     font-size: variables.$fs-title;
     text-align: left;
     width: 100%;
-    font-family: variables.$font-body;
+    font-family: variables.$font-grot;
+    font-weight: 700;
   }
 
   .filtro {
@@ -28,7 +28,8 @@
     .filtroText {
       font-size: variables.$fs-subtitle;
       margin-right: variables.$space-sm;
-      font-family: variables.$font-body;
+      font-family: variables.$font-grot;
+      font-weight: 500;
     }
 
     ul {
@@ -36,7 +37,7 @@
       gap: variables.$space-sm;
 
       li {
-        font-size: variables.$fs-text;
+        font-size: variables.$fs-subtitle-sub;
         padding: variables.$space-xs calc(variables.$space-sm + 7px);
         border-radius: variables.$radius-sm;
         background-color: variables.$cr-acao;
@@ -44,7 +45,8 @@
         border-radius: variables.$radius-lg;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
-        font-family: variables.$font-body;
+        font-family: variables.$font-grot;
+        font-weight: 400;
 
         &:hover {
           transform: translateY(-3px);
@@ -74,18 +76,19 @@
     @include mixins.flexCenter(column, flex-start);
     background-color: variables.$bg-primary;
     padding: 0 variables.$space-md 150px;
-    
+
   }
 
   .tituloFiltro {
-        margin-top: variables.$space-2xl !important;
+    margin-top: variables.$space-2xl !important;
     margin-bottom: 0;
     margin-top: variables.$space-lg;
     color: variables.$cr-primary;
     font-size: variables.$fs-title;
     text-align: left;
     width: 100%;
-    font-family: variables.$font-body;
+    font-family: variables.$font-grot;
+    font-weight: 400;
   }
 
   .filtro {
@@ -97,7 +100,8 @@
     .filtroText {
       font-size: variables.$fs-subtitle;
       margin-right: variables.$space-sm;
-      font-family: variables.$font-body;
+      font-family: variables.$font-grot;
+      font-weight: 400;
     }
 
     ul {
