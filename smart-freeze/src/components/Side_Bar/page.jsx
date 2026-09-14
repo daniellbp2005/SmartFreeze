@@ -1,8 +1,7 @@
 import "./side_bar.module.scss";
-export default function sideBar() {
+export default function sidebar() {
   return (
     <>
-    /* side-bar */
         <div className="sideBar">
             <div className="Logo">
                 <img src="favicon.ico" alt="Logo" />
