@@ -7,14 +7,16 @@
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
-  background: radial-gradient(circle at bottom center, #8f5959, #8a5b5b, #668a99, #b6ade6);
+  background: linear-gradient(225deg, #000428 0%, #004e92 100%);
   width: 100%;
 
   .conteinerLogin {
-    width: 500px;
-    border: 0.5px solid #fff;
+    svg {
+      stroke: variables.$cr-primary;
+    }
+
+    width: auto;
     padding: variables.$space-md;
-    border-radius: variables.$space-md;
 
     .contentHeader {
       width: 100%;
@@ -23,26 +25,103 @@
       h1 {
         font-family: variables.$font-grot;
         font-weight: 100;
+        color: variables.$cr-primary
       }
     }
 
     .bodyLogin {
+      @include mixins.flexCenter(column, center);
       margin-top: variables.$space-sm;
       font-family: variables.$font-grot;
+      gap: variables.$space-sm;
 
-      .label {
-        font-weight: 500;
+      label {
+        width: 100%;
+        font-weight: 300;
+        text-align: start;
+        color: variables.$cr-primary;
+        padding-left: variables.$space-sm;
       }
 
-      .input {
+      .inputContent {
+        @include mixins.flexCenter(auto, center);
         border: 0.5px solid #fff;
-        padding: variables.$space-sm variables.$space-md;
         border-radius: variables.$space-md;
+        padding: variables.$space-sm variables.$space-sm;
+        gap: variables.$space-xs;
+        background-color: variables.$cr-primary;
+
+        &:focus-within {
+          box-shadow: 4px 6px 6px variables.$bg-primary
+        }
+
+        &:hover {
+          transition: .2s ease;
+          border-color: variables.$cr-secondary
+        }
+
+        svg {
+          margin: 0 auto;
+          stroke: variables.$cr-secondary;
+        }
+
+        .input {
+          background-color: inherit;
+          border: none;
+          width: 360px;
+          outline: none
+        }
+      }
+
+      .rowCad {
+        @include mixins.flexCenter(row, end);
+        color: variables.$cr-acao;
+        width: 100%;
+        padding: 0 variables.$space-sm;
+        text-decoration: underline;
+        font-weight: 300;
+        cursor: pointer;
+
+        p {
+          &:hover {
+            color: variables.$cr-primary;
+          }
+        }
+      }
+
+      .rowBtn {
+        width: 100%;
+        @include mixins.flexCenter(row,center);
+      }
+
+      .btnL {
+        padding: 12px 20px;
+        color: variables.$cr-primary;
+        background-color: variables.$cr-secondary;
+        border: none;
+        border-radius: variables.$space-sm;
+        @include mixins.hoverDefault()
       }
     }
   }
 }
 
-.input {
-  width: 100%;
+
+@media (max-width: 425px){
+  .main{
+    .conteinerLogin{
+    width:100% !important;
+    padding: 0 !important;
+    .bodyLogin{
+      form{
+        .inputContent{
+          width: 100% !important;
+          .input{
+            width: 85vw !important;
+          }
+        }
+      }
+    }
+  }
+  }
 }

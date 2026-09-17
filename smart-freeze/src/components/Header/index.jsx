@@ -17,7 +17,7 @@ export default function Header() {
           <li className={styles.liSide}><House size={24} /><p><Link href={"/home"}>Home</Link></p></li>
           <li className={styles.liSide}><Refrigerator size={24} /><p><Link href={"/fridger"}>Geladeira</Link></p></li>
           <li className={styles.liSide}><Settings size={24} /><p><Link href={"/configuracoes"}>Configurações</Link></p></li>
-          <li className={styles.liSide}><UserRound size={24} /><p><Link href={"perfil/"}>Perfil</Link></p></li>
+          <li className={styles.liSide}><UserRound size={24} /><p><Link href={"/perfil"}>Perfil</Link></p></li>
           <li className={styles.liSide}><button className={styles.btnSair}><p><Link href={"/"}>Sair</Link></p> <LogOut size={24} /></button></li>
         </ul>
 
