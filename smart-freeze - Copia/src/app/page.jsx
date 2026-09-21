@@ -1,3 +1,4 @@
+import CardDesktop from "@/components/CardDesktop";
 import styles from "./page.module.scss";
 import Card from "@/components/Card";
 import CardAdd from "@/components/CardAdd";

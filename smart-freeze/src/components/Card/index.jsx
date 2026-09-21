@@ -23,11 +23,13 @@ export default function Card({ alimento }) {
             </div>
             <div className={styles.config}>
                 <button className={styles.addButton}
-                onClick={Add}>
+                // onClick={Add}
+>
                     <PlusIcon size={24} />
                 </button>
                 <button className={styles.deleteButton}
-                onClick={Remove}>
+                // onClick={Remove}
+                >
                     <Trash2 size={24} />
                 </button>
             </div>
