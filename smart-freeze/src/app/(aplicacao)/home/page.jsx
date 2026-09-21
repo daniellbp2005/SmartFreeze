@@ -39,10 +39,10 @@ export default async function Home() {
 
         <section className={styles.section}>
           {alimentos.map((a) => (a.uid === geladeiras[0].id ? (
-            <>
-              <CardDesktop key={a.id} alimento={a} />
-              <Card key={a.id} alimento={a} />
-            </>
+            <div key={a.id}>
+              <CardDesktop alimento={a} />
+              <Card alimento={a} />
+            </div>
           ) : null ))}
           <CardAdd />
         </section>

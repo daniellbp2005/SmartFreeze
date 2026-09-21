@@ -5,6 +5,7 @@
     background-color: variables.$bg-secondary;
     padding: variables.$space-sm;
     border-radius: variables.$radius-sm;
+    height: stretch;
     @include mixins.hoverDefault();
     @include mixins.flexCenter(row, center);
     display: flex;
@@ -20,7 +21,7 @@
 
     .imgCard {
         width: 100%;
-        height: 100%;
+        height: 100%;   
         padding: variables.$space-md;
         background-color: variables.$bg-primary;
         border-radius: variables.$space-md;

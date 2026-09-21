@@ -2,6 +2,7 @@ import mysql from 'mysql2/promise';
 
 
 
+
 export const db = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -35,5 +36,30 @@ export async function getDadosDoBanco() {
   } catch (error) {
     console.error('Erro ao conectar no banco:', error);
     return { usuarios: [], geladeiras: [], alimentos: [], erro: error.message };
+  }
+}
+
+export async function getUserByEmail(email) {
+  try {
+    const [rows] = await db.query('SELECT id, usuario, email, senha FROM usuario WHERE email = ?', [email]);
+    return rows[0] || null;
+  } catch (error) {
+    console.error('Erro ao buscar usuário por email:', error);
+    return null;
+  }
+}
+
+export async function authenticateUserByEmail(email, senha) {
+  try {
+    const user = await getUserByEmail(email);
+    if (!user) return null;
+    // Atenção: compara senha em texto simples. Trocar por hash em produção.
+    if (user.senha === senha) {
+      return { id: user.id, usuario: user.usuario };
+    }
+    return null;
+  } catch (error) {
+    console.error('Erro ao autenticar usuário:', error);
+    return null;
   }
 }

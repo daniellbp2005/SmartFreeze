@@ -23,11 +23,12 @@ export default async function Fridger() {
                 <div className={styles.tituloFiltro}> Geladeiras</div>
                 <section className={styles.section}>
                     {geladeiras.map((g) => (g.uid === usuarios[0].id ? (
-                            <Link href={'/'}>
-                                <Geladeira key={g.id} geladeira={g} />
+                            <Link key={g.id} href={'/home'}>
+                                <Geladeira  geladeira={g} />
                             </Link>
                         ) : null ))}    
                     <CardAdd />
+                    {/* add quebra de linha em texto sem espaços */}
                 </section>
             </main>
         </>

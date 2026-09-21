@@ -5,6 +5,7 @@
     background-color: variables.$bg-secondary;
     padding: variables.$space-sm;
     border-radius: variables.$radius-sm;
+    height: stretch;
     @include mixins.hoverDefault();
     @include mixins.flexCenter(row, space-between);
 
