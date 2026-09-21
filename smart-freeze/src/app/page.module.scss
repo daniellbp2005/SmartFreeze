@@ -2,136 +2,126 @@
 @use "../styles/variables" as variables;
 
 .main {
-  margin-left: variables.$sidebar-width;
-  width: calc(100% - variables.$sidebar-width);
-  height: 100vh;
-  background-color: variables.$bg-primary;
-  padding: variables.$space-lg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(225deg, #000428 0%, #004e92 100%);
+  width: 100%;
 
-  .tituloFiltro {
-    margin-top: variables.$space-sm;
-    margin-bottom: variables.$space-md;
-    color: variables.$cr-primary;
-    font-size: variables.$fs-title;
-    text-align: left;
-    width: 100%;
-    font-family: variables.$font-grot;
-    font-weight: 700;
-  }
-
-  .filtro {
-    @include mixins.flexCenter(row, flex-start);
-    color: variables.$cr-primary;
-    gap: variables.$space-sm;
-
-
-    .filtroText {
-      font-size: variables.$fs-subtitle;
-      margin-right: variables.$space-sm;
-      font-family: variables.$font-grot;
-      font-weight: 500;
+  .conteinerLogin {
+    svg {
+      stroke: variables.$cr-primary;
     }
 
-    ul {
-      @include mixins.flexCenter(row, flex-start);
+    width: auto;
+    padding: variables.$space-md;
+
+    .contentHeader {
+      width: 100%;
+      @include mixins.flexCenter(column, center);
+
+      h1 {
+        font-family: variables.$font-grot;
+        font-weight: 100;
+        color: variables.$cr-primary
+      }
+    }
+
+    .bodyLogin {
+      @include mixins.flexCenter(column, center);
+      margin-top: variables.$space-sm;
+      font-family: variables.$font-grot;
       gap: variables.$space-sm;
 
-      li {
-        font-size: variables.$fs-subtitle-sub;
-        padding: variables.$space-xs calc(variables.$space-sm + 7px);
-        border-radius: variables.$radius-sm;
-        background-color: variables.$cr-acao;
-        border: none;
-        border-radius: variables.$radius-lg;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        font-family: variables.$font-grot;
-        font-weight: 400;
+      label {
+        width: 100%;
+        font-weight: 300;
+        text-align: start;
+        color: variables.$cr-primary;
+        padding-left: variables.$space-sm;
+      }
+
+      .inputContent {
+        @include mixins.flexCenter(auto, center);
+        border: 0.5px solid #fff;
+        border-radius: variables.$space-md;
+        padding: variables.$space-sm variables.$space-sm;
+        gap: variables.$space-xs;
+        background-color: variables.$cr-primary;
+
+        &:focus-within {
+          box-shadow: 4px 6px 6px variables.$bg-primary
+        }
 
         &:hover {
-          transform: translateY(-3px);
-          box-shadow: variables.$shadow-hover;
+          transition: .2s ease;
+          border-color: variables.$cr-secondary
         }
+
+        svg {
+          margin: 0 auto;
+          stroke: variables.$cr-secondary;
+        }
+
+        .input {
+          background-color: inherit;
+          border: none;
+          width: 360px;
+          outline: none
+        }
+      }
+
+      .rowCad {
+        @include mixins.flexCenter(row, end);
+        color: variables.$cr-acao;
+        width: 100%;
+        padding: 0 variables.$space-sm;
+        text-decoration: underline;
+        font-weight: 300;
+        cursor: pointer;
+
+        p {
+          &:hover {
+            color: variables.$cr-primary;
+          }
+        }
+      }
+
+      .rowBtn {
+        width: 100%;
+        @include mixins.flexCenter(row,center);
+      }
+
+      .btnL {
+        padding: 12px 20px;
+        color: variables.$cr-primary;
+        background-color: variables.$cr-secondary;
+        border: none;
+        border-radius: variables.$space-sm;
+        @include mixins.hoverDefault()
       }
     }
   }
-
-  .section {
-    @include mixins.grid();
-    padding: variables.$space-sm;
-    width: 100%;
-    margin-top: variables.$space-md;
-    color: variables.$cr-primary;
-    grid-auto-flow: row;
-  }
-
 }
 
-@media (max-width: 768px) {
-  .main {
-    margin-left: 0;
-    width: 100%;
-    min-height: 100vh;
-    padding: variables.$space-sm;
-    @include mixins.flexCenter(column, flex-start);
-    background-color: variables.$bg-primary;
-    padding: 0 variables.$space-md 150px;
 
-  }
-
-  .tituloFiltro {
-    margin-top: variables.$space-2xl !important;
-    margin-bottom: 0;
-    margin-top: variables.$space-lg;
-    color: variables.$cr-primary;
-    font-size: variables.$fs-title;
-    text-align: left;
-    width: 100%;
-    font-family: variables.$font-grot;
-    font-weight: 400;
-  }
-
-  .filtro {
-    width: 100%;
-    @include mixins.flexCenter(column, flex-start, none);
-    color: variables.$cr-primary;
-    gap: variables.$space-sm;
-
-    .filtroText {
-      font-size: variables.$fs-subtitle;
-      margin-right: variables.$space-sm;
-      font-family: variables.$font-grot;
-      font-weight: 400;
-    }
-
-    ul {
-      @include mixins.flexCenter(row, flex-start);
-      gap: variables.$space-sm;
-
-      li {
-        font-size: variables.$fs-text;
-        padding: variables.$space-xs calc(variables.$space-sm + 7px);
-        border-radius: variables.$radius-sm;
-        background-color: variables.$cr-acao;
-        border: none;
-        border-radius: variables.$radius-lg;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        font-family: variables.$font-body;
-
-        &:hover {
-          transform: translateY(-3px);
-          box-shadow: variables.$shadow-hover;
+@media (max-width: 425px){
+  .main{
+    .conteinerLogin{
+    width:100% !important;
+    padding: 0 !important;
+    .bodyLogin{
+      form{
+        .inputContent{
+          width: 100% !important;
+          .input{
+            width: 85vw !important;
+          }
         }
       }
     }
   }
-
-  .section {
-    @include mixins.grid(100%, variables.$space-md, variables.$space-sm);
-    width: 100%;
-    margin-top: variables.$space-md;
-    color: variables.$cr-primary;
-    grid-auto-flow: row !important;
   }
 }
