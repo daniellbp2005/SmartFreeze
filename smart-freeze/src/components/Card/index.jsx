@@ -1,30 +1,26 @@
 import styles from "./card.module.scss";
-import { PlusIcon, Trash2} from "lucide-react";
+import { AppleIcon, PlusIcon, Trash2} from "lucide-react";
 
 
-export default function Card({produto,Add,Remove}) {
-    if (!produto) return null;
+export default function Card() {
     return (
-
         <div className={styles.card}>
             <div className={styles.cardTitle}>
                 <div className={styles.imgCard}>
-                    {produto.img}
+                    <AppleIcon size={24} />
                 </div>
                 <div className={styles.tituloCard}>
-                    <h3>{produto.nome}</h3>
+                    <h3>Título do Card</h3>
                     <p>
-                        Unidades: <span>{produto.unidades}</span>
+                        Unidades: <span>3</span>
                     </p>
                 </div>
             </div>
             <div className={styles.config}>
-                <button className={styles.addButton}
-                onClick={Add}>
+                <button className={styles.addButton}>
                     <PlusIcon size={24} />
                 </button>
-                <button className={styles.deleteButton}
-                onClick={Remove}>
+                <button className={styles.deleteButton}>
                     <Trash2 size={24} />
                 </button>
             </div>

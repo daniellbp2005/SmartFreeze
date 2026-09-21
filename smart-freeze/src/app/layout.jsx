@@ -1,8 +1,32 @@
-import {Space_Grotesk} from "next/font/google";
+import { Geist, Geist_Mono, Inter, Open_Sans, Montserrat, Space_Grotesk} from "next/font/google";
 import "./globals.scss";
 import Header from "@/components/Header/";
 import Footer from "@/components/Footer";
 
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+})
+
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+})
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+})
 
 const space = Space_Grotesk({
   subsets: ['latin'],
@@ -16,9 +40,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-br" className={`${space.variable}`}>
+    <html lang="pt-br" className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${openSans.variable} ${montserrat.variable} ${space.variable}`}>
       <body>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
