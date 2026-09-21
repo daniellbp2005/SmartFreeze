@@ -4,7 +4,6 @@ import CardAdd from "@/components/CardAdd";
 import { getDadosDoBanco } from '@/lib/db';
 
 
-
 export default async function Home() {
   const { usuarios, geladeiras, alimentos, erro } = await getDadosDoBanco();
 

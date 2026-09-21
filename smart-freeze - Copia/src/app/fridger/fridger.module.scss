@@ -1,0 +1,63 @@
+@use "../../styles/mixins" as mixins;
+@use "../../styles/variables" as variables;
+
+
+.main {
+    margin-left: variables.$sidebar-width;
+    width: calc(100% - variables.$sidebar-width);
+    height: 100vh;
+    background-color: variables.$bg-primary;
+    padding: variables.$space-lg;
+
+    .tituloFiltro {
+        margin-top: variables.$space-sm;
+        color: variables.$cr-primary;
+        font-size: variables.$fs-title;
+        text-align: left;
+        width: 100%;
+        font-family: variables.$font-body;
+        margin-bottom: variables.$space-md;
+    }
+
+
+    .section {
+        @include mixins.grid();
+        padding: variables.$space-sm;
+        width: 100%;
+        margin-top: variables.$space-md;
+        color: variables.$cr-primary;
+        grid-auto-flow: row;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .main {
+        margin-left: 0;
+        width: 100%;
+        min-height: 100vh;
+        padding: variables.$space-sm;
+        @include mixins.flexCenter(column, flex-start);
+        background-color: variables.$bg-primary;
+        padding: 0 variables.$space-md 150px;
+        gap: variables.$space-xl;
+    }
+
+    .tituloFiltro {
+        margin-top: variables.$space-2xl !important;
+        color: variables.$cr-primary;
+        font-size: variables.$fs-title;
+        text-align: left;
+        width: 100%;
+        font-family: variables.$font-body;
+        margin-bottom: 0 !important;
+    }
+
+    .section {
+        @include mixins.grid(100%, variables.$space-md, variables.$space-sm);
+        width: 100%;
+        margin-top: 0 !important;
+        color: variables.$cr-primary;
+        grid-auto-flow: row !important;
+    }
+}
