@@ -4,6 +4,7 @@ import {Pizza,GlassWater,Milk,Beef,AppleIcon, PlusIcon, Trash2} from "lucide-rea
 
 export default function Card({ alimento }) {
     return (
+
         <div className={styles.card}>
             <div className={styles.cardTitle}>
                 <div className={styles.imgCard}>
@@ -21,10 +22,12 @@ export default function Card({ alimento }) {
                 </div>
             </div>
             <div className={styles.config}>
-                <button className={styles.addButton}>
+                <button className={styles.addButton}
+                onClick={Add}>
                     <PlusIcon size={24} />
                 </button>
-                <button className={styles.deleteButton}>
+                <button className={styles.deleteButton}
+                onClick={Remove}>
                     <Trash2 size={24} />
                 </button>
             </div>

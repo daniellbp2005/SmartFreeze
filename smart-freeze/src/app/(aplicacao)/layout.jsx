@@ -1,12 +1,11 @@
-import {Space_Grotesk} from "next/font/google";
-import "./globals.scss";
+import { Space_Grotesk } from "next/font/google";
 import Header from "@/components/Header/";
 import Footer from "@/components/Footer";
 
 
 const space = Space_Grotesk({
   subsets: ['latin'],
-  weight: ['300','400','500','600','700'],
+  weight: ['300', '400', '500', '600', '700'],
 })
 
 export const metadata = {
@@ -16,10 +15,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-br" className={`${space.variable}`}>
-      <body>
-        {children}
-      </body>
-    </html>
+    <>
+      <Header />
+      {children}
+      <Footer />
+    </>
+
   );
 }
