@@ -2,31 +2,32 @@ import Link from "next/link";
 import styles from "./fridger.module.scss";
 import Geladeira from "@/components/Geladeira";
 import CardAdd from "@/components/CardAdd"
-import { getDadosDoBanco } from '@/lib/db';
+
+async function getHomeData() {
+  const res = await fetch("http://localhost:3305/api/geladeiras", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Erro ao carregar geladeiras do backend");
+  }
+
+  const data = await res.json();
+  return data.geladeiras ?? [];
+}
 
 export default async function Fridger() {
-    const { usuarios, geladeiras, erro } = await getDadosDoBanco();
-
-    if (erro) {
-        return (
-            <div style={{ padding: '20px', color: 'red', fontFamily: 'sans-serif' }}>
-                <h1>❌ Erro ao conectar ao MySQL Workbench</h1>
-                <p><strong>Detalhes:</strong> {erro}</p>
-                <p>Verifique se o MySQL está rodando e se as credenciais do <code>.env.local</code> estão corretas.</p>
-            </div>
-        );
-    }
-
+    const geladeiras = await getHomeData();
     return (
         <>
             <main className={styles.main}>
                 <div className={styles.tituloFiltro}> Geladeiras</div>
                 <section className={styles.section}>
-                    {geladeiras.map((g) => (g.uid === usuarios[0].id ? (
+                    {geladeiras.map((g) =>  (
                             <Link key={g.id} href={'/home'}>
                                 <Geladeira  geladeira={g} />
                             </Link>
-                        ) : null ))}    
+                        ))}    
                     <CardAdd />
                     {/* add quebra de linha em texto sem espaços */}
                 </section>

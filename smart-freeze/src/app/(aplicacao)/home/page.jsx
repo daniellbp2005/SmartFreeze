@@ -2,30 +2,32 @@ import CardDesktop from "@/components/CardDesktop";
 import styles from "./home.module.scss";
 import Card from "@/components/Card";
 import CardAdd from "@/components/CardAdd";
-import { getDadosDoBanco } from '@/lib/db';
 
+async function getHomeData() {
+  const res = await fetch("http://localhost:3305/api/alimentos", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Erro ao carregar alimentos do backend");
+  }
+
+  const data = await res.json();
+  return data.alimentos ?? [];
+}
 
 export default async function Home() {
-  const { usuarios, geladeiras, alimentos, erro } = await getDadosDoBanco();
+  const alimentos = await getHomeData();
 
-  if (erro) {
-    return (
-      <div style={{ padding: '20px', color: 'red', fontFamily: 'sans-serif' }}>
-        <h1>❌ Erro ao conectar ao MySQL Workbench</h1>
-        <p><strong>Detalhes:</strong> {erro}</p>
-        <p>Verifique se o MySQL está rodando e se as credenciais do <code>.env.local</code> estão corretas.</p>
-      </div>
-    );
-  }
   return (
     <>
       <main className={styles.main}>
         <div className={styles.tituloFiltro}>
-          {usuarios.map((u) => (
-            <p key={u.id}>Bem vindo, <span>{u.usuario}</span></p>
-          ))}
+          <p>
+            Bem vindo, <span>Usuário</span>
+          </p>
         </div>
-      
+
         <div className={styles.filtro}>
           <p className={styles.filtroText}>Filtrar Por:</p>
           <ul>
@@ -38,12 +40,12 @@ export default async function Home() {
         </div>
 
         <section className={styles.section}>
-          {alimentos.map((a) => (a.uid === geladeiras[0].id ? (
+          {alimentos.map((a) => (
             <div key={a.id}>
               <CardDesktop alimento={a} />
               <Card alimento={a} />
             </div>
-          ) : null ))}
+          ))}
           <CardAdd />
         </section>
       </main>
