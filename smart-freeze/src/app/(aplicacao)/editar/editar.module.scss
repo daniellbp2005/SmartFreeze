@@ -2,7 +2,7 @@
 @use "../../../styles/variables" as variables;
 
 
-@media (min-width: 769px) {
+@media (min-width: 769px){
     .main {
         margin-left: variables.$sidebar-width;
         width: calc(100% - variables.$sidebar-width);
@@ -32,30 +32,29 @@
 
         .tituloCard {
             font-family: variables.$font-grot;
+                h3 {
+                    font-weight: 500;
+                    font-size: variables.$fs-subtitle;
+                    font-family: variables.$font-body;
+                }
 
-            h3 {
-                font-weight: 500;
-                font-size: variables.$fs-subtitle;
-                font-family: variables.$font-body;
-            }
-
-            p {
-                font-size: variables.$fs-text;
-                font-family: variables.$font-body;
-            }
+                p {
+                    font-size: variables.$fs-text;
+                    font-family: variables.$font-body;
+                }
         }
 
         .card {
-            width: 90%;
-            background-color: variables.$bg-secondary;
-            padding: variables.$space-sm;
-            border-radius: variables.$radius-sm;
-            height: stretch;
-            @include mixins.hoverDefault();
-            @include mixins.flexCenter(row, flex-start);
-            display: flex;
-            flex-direction: row;
-            gap: variables.$space-md;
+        width: 90%;
+        background-color: variables.$bg-secondary;
+        padding: variables.$space-sm;
+        border-radius: variables.$radius-sm;
+        height: stretch;
+        @include mixins.hoverDefault();
+        @include mixins.flexCenter(row, flex-start);
+        display: flex;
+        flex-direction: row;
+        gap: variables.$space-md;
 
 
             .imgBg {
@@ -66,7 +65,7 @@
 
             .imgCard {
                 width: 100%;
-                height: 100%;
+                height: 100%;   
                 padding: variables.$space-md;
                 background-color: variables.$bg-primary;
                 border-radius: variables.$space-md;
@@ -76,14 +75,14 @@
                     height: 100%;
                 }
             }
-
             .textContent {
                 width: 50%;
                 height: 80%;
                 @include mixins.flexCenter(column);
+                // gap: 15px;
             }
-
             .tituloCard {
+
                 h3 {
                     font-weight: 500;
                     font-size: variables.$fs-subtitle-sub;
@@ -129,7 +128,7 @@
         color: variables.$cr-primary;
         grid-auto-flow: row !important;
     }
-
+    
     .card {
         @include mixins.flexCenter(row, flex-start);
         background-color: variables.$bg-secondary;
@@ -145,7 +144,6 @@
 
         .cardTitle {
             @include mixins.flexCenter(row, flex-start);
-
             .imgCard {
                 width: 50px;
                 height: 50px;
@@ -156,26 +154,5 @@
                 }
             }
         }
-    }
-
-    .logoutMobile {
-        @include mixins.flexCenter(row, flex-start);
-        background-color: variables.$cr-danger;
-        padding: variables.$space-sm;
-        gap: variables.$space-3xl;
-        border-radius: variables.$radius-sm;
-
-
-        @include mixins.hoverDefault();
-
-        &:hover {
-            border: 0.5px solid variables.$cr-acao;
-        }
-    }
-}
-
-@media (min-width: 769px) {
-    .logoutMobile {
-        display: none;
     }
 }
