@@ -5,6 +5,12 @@
     display: none;
 }
 
+.btnChamar{
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .card {
         @include mixins.flexCenter(row, space-between);

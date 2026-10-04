@@ -1,0 +1,64 @@
+@use "../../styles/mixins" as mixins;
+@use "../../styles/variables" as variables;
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.conteudo {
+  @include mixins.flexCenter(column, flex-start);
+  background: variables.$bg-secondary;
+  border: .5 solid variables.$bg-borda;
+  border-radius: variables.$radius-md;
+  padding: 24px;
+  border-radius: 12px;
+  color: variables.$cr-primary;
+  gap: variables.$space-sm;
+  font-size: variables.$fs-subtitle-sub;
+  font-family: variables.$font-grot;
+  font-weight: 500;
+  min-width: 40%;
+
+  .row {
+    h2{
+      font-size: variables.$fs-title
+    }
+    @include mixins.flexCenter(column, flex-start);
+    width: 100%;
+    font-size: variables.$fs-subtitle-sub;
+    font-family: variables.$font-grot;
+    font-weight: 800;
+
+    p {
+      width: 100%;
+      text-align: left
+    }
+  }
+
+  .body {
+    @include mixins.flexCenter(column, flex-start);
+    width: 100%;
+    text-align: left;
+
+    p {
+      width: 100%;
+      text-align: left;
+    }
+  }
+  button{
+    width: 100%;
+    border: none;
+    border-radius: variables.$space-md;
+    padding: variables.$space-md;
+    background-color: variables.$cr-danger;
+    color:variables.$cr-primary;
+    font-size: variables.$fs-text;
+    // @include mixins.hoverDefault();
+  }
+}

@@ -2,10 +2,10 @@ import styles from "./cardDesktop.module.scss";
 import {Pizza,GlassWater,Milk,Beef,AppleIcon, PlusIcon, Trash2} from "lucide-react";
 
 
-export default function CardDesktop({alimento}) {
+export default function CardDesktop({alimento, onClick}) {
     if(!alimento) return null;
     return (
-        <div className={styles.card}>
+        <div className={styles.card} onClick={onClick}>
             <div className={styles.imgBg}>
                 <div className={styles.imgCard}>
                     {alimento.categoria === "frutas" && <AppleIcon size={24} />}
