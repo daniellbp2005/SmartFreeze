@@ -19,6 +19,14 @@
     }
 }
 
+@mixin hoverDefaultRed($translate: $translate-y-hover-5, $shadow: $shadow-hover-red) {
+    transition: $transition-default;
+    &:hover {
+        transform: $translate;
+        box-shadow: $shadow;
+    }
+}
+
 // GRID RESPONSIVO
 @mixin grid($min-width: 310px, $gap: $space-md, $padding: 0) {
     gap: $gap;
