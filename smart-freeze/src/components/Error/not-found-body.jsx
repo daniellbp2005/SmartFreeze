@@ -10,7 +10,7 @@ function Error() {
                         <h2 id='h2404'>Page not found</h2>
 
                     </div>
-                    <a id='errorbutton' href="/">Return To Home</a>
+                    <a id='errorbutton' href="/home">Return To Home</a>
                 </div>
 
             </div>

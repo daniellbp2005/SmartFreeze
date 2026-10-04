@@ -6,7 +6,25 @@
   display: none;
 }
 
+
+
 @media (max-width: 768px) {
+  .active {
+    .tabItem {
+      .tabTitle{
+        color: variables.$cr-vip !important;
+      }
+      .tabLink {
+        div {
+          svg{
+            stroke: variables.$cr-vip;
+          }
+        }
+      }
+    }
+  }
+
+
   .addProduto {
     display: block;
     position: fixed;
@@ -28,6 +46,7 @@
       transform 0.3s ease-in-out,
       box-shadow 0.3s ease-in-out;
   }
+
   .tabBar {
     display: flex;
     width: 100%;
@@ -44,11 +63,13 @@
 
       .tabItem {
         cursor: pointer;
+        transition: variables.$transition-slow;
+
         &:hover {
+
           .tabTitle,
           svg {
-            stroke: variables.$cr-vip;
-            color: variables.$cr-vip;
+            stroke: variables.$cr-acao;
           }
         }
 
@@ -72,4 +93,5 @@
       }
     }
   }
+
 }

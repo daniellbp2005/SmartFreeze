@@ -6,14 +6,25 @@ export default function ModalAlimentos({ alimento, onClose }) {
             <div className={styles.conteudo}>
                 <div className={styles.row}>
                     <h2>{alimento.nome}</h2>
-                    <p>Marca: {alimento.marca}</p>
                 </div>
                 <div className={styles.body}>
-                    <p>Categoria: {alimento.categoria}</p>
-                    <p>Validade: {alimento.validade}</p>
-                    <p>Quantidade: {alimento.quantidade}</p>
+                    <div className={styles.ladoInfo}>
+                        <h3>Descrição</h3>
+                        <p><span>Marca: </span>{alimento.marca}</p>
+                        <p><span>Categoria: </span> {alimento.categoria}</p>
+                        <p><span>Validade: </span> {alimento.validade}</p>
+                        <p><span>Quantidade: </span>{alimento.quantidade}</p>
+                        <p><span>Marca: </span> {alimento.marca}</p>
+                    </div>
+                    <div className={styles.ladoImg}>
+                        {/* <img src={alimento.img} alt="Foto do Alimento" /> */}
+                        <img src="https://placehold.co/175x175?text=Imagem" />
+                    </div>
                 </div>
-                <button onClick={onClose}>Fechar</button>
+                <div className={styles.rowCol}>
+                    <button onClick={onClose}>Efetuar</button>
+                    <button onClick={onClose}>Sair</button>
+                </div>
             </div>
         </div>
     );

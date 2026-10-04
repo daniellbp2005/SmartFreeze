@@ -1,6 +1,14 @@
 @use '../../styles/mixins' as mixins;
 @use '../../styles/variables';
 
+.active{
+    background-color: variables.$cr-acao !important;
+}
+
+.btnLiExit{
+    @include mixins.hoverDefaultRed;;
+}
+
 .header {
     position: fixed;
     min-width: variables.$sidebar-width;
@@ -37,24 +45,24 @@
         height: calc(100vh - (variables.$space-lg * 3.2));
         padding: variables.$space-md variables.$space-sm;
         @include mixins.flexCenter(column,center,auto);
-
+        gap: variables.$space-sm;
         li {
             background-color: variables.$bg-primary;
             border: none;
-            border-radius: variables.$radius-md;
-            padding: variables.$space-sm;
-            margin-bottom: variables.$space-sm;
+            border-radius: variables.$radius-sm;
             cursor: pointer;
             text-align: center;
             color: variables.$cr-primary;
             font-family: variables.$font-body;
             transition: variables.$transition-default;
-            
+            width: 100%;
+            // padding: 0 variables.$space-sm;
             @include mixins.hoverDefault();
             @include mixins.flexCenter(row,flex-start);
-
+            
             p{
-                width: 100%;
+                padding: variables.$space-sm;
+                width: 90%;
             }
         }
 
@@ -70,11 +78,14 @@
         width: 100%;
         height: 100%;
         border: none;
-        border-radius: variables.$radius-md;
+        border-radius: variables.$radius-sm;
         padding: variables.$space-sm;
         cursor: pointer;
         color: variables.$cr-primary;
         @include mixins.flexCenter(row,center);
+    }
+    li.btnLiExit{
+        @include mixins.hoverDefaultRed;
     }
 }
 

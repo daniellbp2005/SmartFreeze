@@ -35,6 +35,8 @@
     ul {
       @include mixins.flexCenter(row, flex-start);
       gap: variables.$space-sm;
+          flex-wrap: wrap;
+
 
       li {
         font-size: variables.$fs-subtitle-sub;
@@ -93,7 +95,11 @@
 
   .filtro {
     width: 100%;
-    @include mixins.flexCenter(column, flex-start, none);
+    // @include mixins.flexCenter(column, flex-start); N funcionou locura;
+    display: flex;
+    justify-content: flex-start !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
     color: variables.$cr-primary;
     gap: variables.$space-sm;
 
