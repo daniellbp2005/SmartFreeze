@@ -1,4 +1,5 @@
 import styles from './alimentos.module.scss';
+import {Pizza,GlassWater,Milk,Beef,AppleIcon, PlusIcon, Trash2} from "lucide-react";
 
 export default function ModalAlimentos({ alimento, onClose }) {
     return (
@@ -17,8 +18,11 @@ export default function ModalAlimentos({ alimento, onClose }) {
                         <p><span>Marca: </span> {alimento.marca}</p>
                     </div>
                     <div className={styles.ladoImg}>
-                        {/* <img src={alimento.img} alt="Foto do Alimento" /> */}
-                        <img src="https://placehold.co/175x175?text=Imagem" />
+                        {alimento.categoria === "frutas" && <AppleIcon style={{ width: '100%', height: '100%', padding: '10px' }} />}
+                        {alimento.categoria === "bebidas" && <GlassWater style={{ width: '100%', height: '100%', padding: '10px' }} />}
+                        {alimento.categoria === "laticinios" && <Milk style={{ width: '100%', height: '100%', padding: '10px' }} />}
+                        {alimento.categoria === "carnes" && <Beef style={{ width: '100%', height: '100%', padding: '10px' }} />}
+                        {alimento.categoria === "outros" && <Pizza style={{ width: '100%', height: '100%', padding: '10px' }} />}
                     </div>
                 </div>
                 <div className={styles.rowCol}>

@@ -1,0 +1,83 @@
+@use "../../styles/mixins" as mixins;
+@use "../../styles/variables" as variables;
+
+  .filtro {
+    @include mixins.flexCenter(row, flex-start);
+    color: variables.$cr-primary;
+    gap: variables.$space-sm;
+
+
+    .filtroText {
+      font-size: variables.$fs-subtitle;
+      margin-right: variables.$space-sm;
+      font-family: variables.$font-grot;
+      font-weight: 500;
+    }
+
+    ul {
+      @include mixins.flexCenter(row, flex-start);
+      gap: variables.$space-sm;
+          flex-wrap: wrap;
+
+
+      li {
+        font-size: variables.$fs-subtitle-sub;
+        padding: variables.$space-xs calc(variables.$space-sm + 7px);
+        border-radius: variables.$radius-sm;
+        background-color: variables.$cr-acao;
+        border: none;
+        border-radius: variables.$radius-lg;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        font-family: variables.$font-grot;
+        font-weight: 400;
+
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: variables.$shadow-hover;
+        }
+      }
+    }
+  }
+
+@media (max-width: 768px) {
+  .filtro {
+    width: 100%;
+    // @include mixins.flexCenter(column, flex-start); N funcionou locura;
+    display: flex;
+    justify-content: flex-start !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    color: variables.$cr-primary;
+    gap: variables.$space-sm;
+
+    .filtroText {
+      font-size: variables.$fs-subtitle;
+      margin-right: variables.$space-sm;
+      font-family: variables.$font-grot;
+      font-weight: 400;
+    }
+
+    ul {
+      @include mixins.flexCenter(row, flex-start);
+      gap: variables.$space-sm;
+
+      li {
+        font-size: variables.$fs-text;
+        padding: variables.$space-xs calc(variables.$space-sm + 7px);
+        border-radius: variables.$radius-sm;
+        background-color: variables.$cr-acao;
+        border: none;
+        border-radius: variables.$radius-lg;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        font-family: variables.$font-body;
+
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: variables.$shadow-hover;
+        }
+      }
+    }
+  }
+}

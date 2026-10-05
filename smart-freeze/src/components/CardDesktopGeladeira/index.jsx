@@ -1,5 +1,5 @@
-import styles from "./cardDesktop.module.scss";
-import {Pizza,GlassWater,Milk,Beef,AppleIcon, PlusIcon, Trash2} from "lucide-react";
+import styles from "./cardDesktopGeladeira.module.scss";
+import {Refrigerator,PlusIcon,Trash2} from "lucide-react";
 
 
 export default function CardDesktop({geladeira, onClick}) {
@@ -8,11 +8,7 @@ export default function CardDesktop({geladeira, onClick}) {
         <div className={styles.card} onClick={onClick}>
             <div className={styles.imgBg}>
                 <div className={styles.imgCard}>
-                    {geladeira.categoria === "frutas" && <AppleIcon size={24} />}
-                    {geladeira.categoria === "bebidas" && <GlassWater size={24} />}
-                    {geladeira.categoria === "laticinios" && <Milk size={24} />}
-                    {geladeira.categoria === "carnes" && <Beef size={24} />}
-                    {geladeira.categoria === "outros" && <Pizza size={24} />}
+                    <Refrigerator size={24} />
                 </div>
             </div>
             <div className={styles.textContent}>

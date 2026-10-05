@@ -37,7 +37,12 @@
         @include mixins.flexCenter(column,space-between);
         // gap: 15px;
     }
+    div{
+        @include mixins.flexCenter(column,flex-start, flex-start);
+        width: 100%;
+    }
     .tituloCard {
+    
         h3 {
             font-weight: 500;
             font-size: variables.$fs-subtitle-sub;
