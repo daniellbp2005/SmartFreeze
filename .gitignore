@@ -6,12 +6,6 @@
 **/out/
 **/build/
 **/dist/
-
-# Arquivos de ambiente
-**/.env
-**/.env.*
-!.env.example
-
 # Logs
 **/*.log
 npm-debug.log*

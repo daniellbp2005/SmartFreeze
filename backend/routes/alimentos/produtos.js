@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/", listAlimentos);
 
-router.post("/", addAlimentos);
+router.post("/:id", addAlimentos);
 
 router.put("/:id", atualizarProduto);
 
