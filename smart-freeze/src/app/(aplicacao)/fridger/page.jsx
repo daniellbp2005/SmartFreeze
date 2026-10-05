@@ -1,23 +1,21 @@
+"use client";
 import Link from "next/link";
 import styles from "./fridger.module.scss";
 import Geladeira from "@/components/Geladeira";
-import CardAdd from "@/components/CardAdd"
+import CardAdd from "@/components/CardAdd";
+import { useState, useEffect } from "react";
 
-async function getHomeData() {
-  const res = await fetch("http://localhost:3305/api/geladeiras", {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Erro ao carregar geladeiras do backend");
-  }
-
-  const data = await res.json();
-  return data.geladeiras ?? [];
-}
-
-export default async function Fridger() {
-    const geladeiras = await getHomeData();
+export default function Fridger() {
+      const [geladeiras, setGeladeiras] = useState([]);
+    
+      useEffect(() => {
+        async function carregarGeladeiras() {
+          const linkAPI = await fetch("http://localhost:3005/api/geladeiras");
+          const data = await linkAPI.json();
+          setGeladeiras(data.geladeiras ?? [] );
+        }
+        carregarGeladeiras();
+      }, []);
     return (
         <>
             <main className={styles.main}>
