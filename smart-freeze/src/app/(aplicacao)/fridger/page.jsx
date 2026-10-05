@@ -1,23 +1,13 @@
 import Link from "next/link";
 import styles from "./fridger.module.scss";
 import Geladeira from "@/components/Geladeira";
+import GeladeiraDesktop from "@/components/CardDesktopGeladeira";
 import CardAdd from "@/components/CardAdd"
 
-async function getHomeData() {
-  const res = await fetch("http://localhost:3305/api/geladeiras", {
-    cache: "no-store",
-  });
 
-  if (!res.ok) {
-    throw new Error("Erro ao carregar geladeiras do backend");
-  }
+export default function Fridger() {
+    // const geladeiras = await getHomeData();
 
-  const data = await res.json();
-  return data.geladeiras ?? [];
-}
-
-export default async function Fridger() {
-    const geladeiras = await getHomeData();
     return (
         <>
             <main className={styles.main}>
@@ -26,6 +16,7 @@ export default async function Fridger() {
                     {geladeiras.map((g) =>  (
                             <Link key={g.id} href={'/home'}>
                                 <Geladeira  geladeira={g} />
+                                <GeladeiraDesktop geladeira={g} />
                             </Link>
                         ))}    
                     <CardAdd />
