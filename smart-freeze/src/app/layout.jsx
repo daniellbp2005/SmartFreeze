@@ -1,7 +1,5 @@
 import {Space_Grotesk} from "next/font/google";
 import "./globals.scss";
-import Header from "@/components/Header/";
-import Footer from "@/components/Footer";
 
 
 const space = Space_Grotesk({

@@ -8,7 +8,7 @@ export default function Footer() {
   const pathername = usePathname();
   return (
     <>
-      <button className={styles.addProduto}>
+      <button className={styles.addProduto} style={{color: '#fff'}} >
         <p>Adicionar Produto +</p>
       </button>
       <footer className={styles.tabBar}>
@@ -44,7 +44,7 @@ export default function Footer() {
         </div>
         <div className={`${styles.col}  ${pathername === "/editar" ? styles.active : ""}`}>
           <div className={styles.tabItem}>
-            <Link className={styles.tabLink} href={"/perfil"}>
+            <Link className={styles.tabLink} href={"/editar"}>
               <div className={styles.perfil}>
                 <UserRound size={24} />
               </div>

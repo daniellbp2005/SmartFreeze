@@ -1,6 +1,7 @@
 import { Space_Grotesk } from "next/font/google";
 import Header from "@/components/Header/";
 import Footer from "@/components/Footer";
+import InicializarTema from "../inicializarTema";
 
 
 const space = Space_Grotesk({
@@ -16,6 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <>
+      <InicializarTema />
       <Header />
       {children}
       <Footer />

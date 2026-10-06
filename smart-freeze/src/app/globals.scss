@@ -1,23 +1,58 @@
     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-img{
-    display: block;
-    max-width: 100%;
-}
+    img {
+        display: block;
+        max-width: 100%;
+    }
 
-a{
-    text-decoration: none;
-    color: inherit;
-}
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 
-ul, ol {
-    list-style: none;
-}
+    ul,
+    ol {
+        list-style: none;
+    }
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Inter:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    body.escuro {
+        color-scheme: dark; // info ao navegador que o site tem modo escuro
 
-@font-face {font-family: 'textoLegal'; src: url('/font/font.ttf') format('truetype'); font-weight: normal; font-style: normal;}
+        --bg-primary: #171810;
+        --bg-secondary: #2a2a2a;
+        --bg-terciaria: #222222;
+        --bg-borda: #222222;
+
+        --cr-primary: #ffffff;
+        --cr-secondary: #000000;
+        --cr-acao: #007bff;
+        --text-primary: #ffffff;
+        --text-secundary: #f0f8ff;
+        --border-color: #d6ccbe;
+    }
+
+    body.claro {
+        color-scheme: light; // info ao navegador que o site tem modo claro
+
+        --bg-primary: rgba(126, 121, 144, 0.255);
+        --bg-secondary: aliceblue;
+        --bg-terciaria: #e9e9e9;
+        --bg-borda: #d6d6d6;
+
+        --cr-primary: #171717;
+        --cr-secondary: #ffffff;
+        --cr-acao: #00d9ff;
+        --text-primary: #171717;
+        --text-secundary: #555555;
+        --border-color: #c8c8c8;
+    }
+
+    body {
+        background-color: var(--bg-primary);
+        color: var(--cr-primary);
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
