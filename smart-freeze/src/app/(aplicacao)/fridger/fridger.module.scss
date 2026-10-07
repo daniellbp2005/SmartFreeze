@@ -15,6 +15,7 @@
         text-align: left;
         width: 100%;
         font-family: variables.$font-body;
+        font-weight: 400;
         margin-bottom: variables.$space-md;
     }
 
@@ -37,7 +38,6 @@
         @include mixins.flexCenter(column, flex-start);
         background-color: variables.$bg-primary;
         padding: 0 variables.$space-md 150px;
-        gap: variables.$space-xl;
     }
 
     .tituloFiltro {
@@ -47,7 +47,6 @@
         text-align: left;
         width: 100%;
         font-family: variables.$font-body;
-        margin-bottom: 0 !important;
     }
 
     .section {

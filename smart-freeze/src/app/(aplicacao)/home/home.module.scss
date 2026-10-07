@@ -15,8 +15,8 @@
     font-size: variables.$fs-title;
     text-align: left;
     width: 100%;
-    font-family: variables.$font-grot;
-    font-weight: 700;
+    font-family: variables.$font-body;
+    font-weight: 400;
   }
 
   .section {
@@ -43,13 +43,11 @@
 
   .tituloFiltro {
     margin-top: variables.$space-2xl !important;
-    margin-bottom: 0;
-    margin-top: variables.$space-lg;
     color: variables.$cr-primary;
     font-size: variables.$fs-title;
     text-align: left;
     width: 100%;
-    font-family: variables.$font-grot;
+    font-family: variables.$font-body;
     font-weight: 400;
   }
 

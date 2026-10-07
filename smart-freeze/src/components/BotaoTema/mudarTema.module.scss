@@ -73,8 +73,8 @@
             border: 0.5px solid variables.$cr-acao;
         }
 
-        .cardTitle {
-            @include mixins.flexCenter(row, flex-start);
+        .tituloCard {
+            font-family: variables.$font-grot;
 
             .imgCard {
                 width: 50px;

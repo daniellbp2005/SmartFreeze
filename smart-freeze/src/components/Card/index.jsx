@@ -1,5 +1,5 @@
 import styles from "./card.module.scss";
-import { Pizza, GlassWater, Milk, Beef, AppleIcon, PlusIcon, Trash2 } from "lucide-react";
+import { PlusIcon, Trash2, Carton, GlassWater, Beef, Cuboid, Apple, CircleQuestionMark} from "lucide-react";
 
 
 export default function Card({ alimento, onClick }) {
@@ -7,11 +7,12 @@ export default function Card({ alimento, onClick }) {
             <div className={styles.card} onClick={onClick}>
                 <div className={styles.cardTitle}>
                     <div className={styles.imgCard}>
-                        {alimento.categoria === "frutas" && <AppleIcon size={24} />}
-                        {alimento.categoria === "bebidas" && <GlassWater size={24} />}
-                        {alimento.categoria === "laticinios" && <Milk size={24} />}
-                        {alimento.categoria === "carnes" && <Beef size={24} />}
-                        {alimento.categoria === "outros" && <Pizza size={24} />}
+                        {alimento.categoria === "Laticínios" ? <Carton size={24} /> : null}
+                        {alimento.categoria === "Bebidas" ? <GlassWater size={24} /> : null}
+                        {alimento.categoria === "Frios" ? <Cuboid size={24} /> : null}
+                        {alimento.categoria === "Carnes" ? <Beef size={24} /> : null}
+                        {alimento.categoria === "Hortifrúti" ? <Apple size={24} /> : null}
+                        {alimento.categoria === "" ? <CircleQuestionMark size={24} /> : null}
                     </div>
                     <div className={styles.tituloCard}>
                         <h3>{alimento?.nome[0]?.toUpperCase() + alimento.nome.substring(1) || "Nome do Alimento"}</h3>
