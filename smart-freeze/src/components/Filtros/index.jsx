@@ -2,7 +2,7 @@
 import styles from "./filtros.module.scss";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-export default function Filtros() {
+export default function Filtros({ texto }) {
     const pathname = usePathname();
     const [cat, setCat] = useState([]);
     useEffect(() => {
@@ -33,11 +33,11 @@ export default function Filtros() {
     return (
         <>
             <div className={styles.filtro}>
-                <p className={styles.filtroText}>Filtrar Por:</p>
+                <p className={styles.filtroText}>{texto}</p>
                 <ul>
                     <ul>
                         {cat.map((item, index) => (
-                            pathname === "/home" ? (<li key={`${item}-${index}`}>{item}</li>) : (<li key={`${item}-${index}`}>{item}</li>))
+                            pathname === "/home" ? (<li key={`${item}-${index}`} style={{ color: '#fff' }} >{item}</li>) : (<li key={`${item}-${index}`}>{item}</li>))
                         )
                         }
                     </ul>
