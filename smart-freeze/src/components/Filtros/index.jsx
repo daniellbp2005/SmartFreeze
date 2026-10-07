@@ -37,7 +37,7 @@ export default function Filtros({texto}) {
                 <ul>
                     <ul>
                         {cat.map((item, index) => (
-                            pathname === "/home" ? (<li key={`${item}-${index}`}>{item}</li>) : (<li key={`${item}-${index}`}>{item}</li>))
+                            pathname === "/home" ? (<li key={`${item}-${index}`} style={{ color: '#fff' }} >{item}</li>) : (<li key={`${item}-${index}`}>{item}</li>))
                         )
                         }
                     </ul>

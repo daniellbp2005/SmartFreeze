@@ -50,6 +50,7 @@
     align-items: flex-start !important;
     color: variables.$cr-primary;
     gap: variables.$space-sm;
+    margin-bottom: variables.$space-sm;
 
     .filtroText {
       font-size: variables.$fs-subtitle;
@@ -63,8 +64,8 @@
       gap: variables.$space-sm;
 
       li {
-        font-size: variables.$fs-text;
-        padding: variables.$space-xs calc(variables.$space-sm + 7px);
+        font-size: calc(variables.$fs-text + 2px);
+        padding: variables.$space-sm calc(variables.$space-sm + 7px);
         border-radius: variables.$radius-sm;
         background-color: variables.$cr-acao;
         border: none;

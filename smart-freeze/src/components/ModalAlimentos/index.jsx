@@ -4,7 +4,10 @@ import { useState } from 'react';
 
 export default function ModalAlimentos({ alimento, onClose, OnAdd, OnRemove, OnEditar }) {
     const [isEditing, setIsEditing] = useState(false);
-    const [dadosEdicao, setDadosEdicao] = useState(alimento);
+    const [dadosEdicao, setDadosEdicao] = useState({
+        ...alimento,
+        validade: alimento?.validade ? String(alimento.validade).split("T")[0] : "",
+    });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -12,7 +15,11 @@ export default function ModalAlimentos({ alimento, onClose, OnAdd, OnRemove, OnE
     };
 
     const handleSalvar = () => {
-        OnEditar(dadosEdicao);
+        const payload = {
+            ...dadosEdicao,
+            validade: dadosEdicao.validade ? String(dadosEdicao.validade).split("T")[0] : "",
+        };
+        OnEditar(payload);
         setIsEditing(false);
     };
     return (

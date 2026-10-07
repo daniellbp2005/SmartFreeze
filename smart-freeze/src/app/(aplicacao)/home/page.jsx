@@ -8,7 +8,7 @@ import ModalAlimentos from "@/components/ModalAlimentos";
 import Filtros from "@/components/Filtros";
 import { useState, useEffect } from "react";
 
-export  default  function Home() {
+export default function Home() {
   const [alimentos, setAlimentos] = useState([]);
   const params = useParams();
 
@@ -30,7 +30,7 @@ export  default  function Home() {
   const [selecionada,setSelecionado] = useState(null);
   const handleAdd = async () => {
     if (!selecionada) return;
-    
+
     try {
       const res = await fetch(`http://localhost:3005/api/alimentos/${selecionada.id}`, {
         method: 'PUT',
@@ -42,7 +42,7 @@ export  default  function Home() {
           quantidade: Number(selecionada.quantidade) + 1
         })
       });
-      
+
       if (res.ok) {
         setAlimentos(alimentos.map(a => 
           a.id === selecionada.id ? { ...a, quantidade: Number(a.quantidade) + 1 } : a
@@ -56,7 +56,7 @@ export  default  function Home() {
 
   const handleRemove = async () => {
     if (!selecionada) return;
-    
+
     try {
       const res = await fetch(`http://localhost:3005/api/alimentos/${selecionada.id}`, {
         method: 'DELETE',
@@ -64,7 +64,7 @@ export  default  function Home() {
           'Content-Type': 'application/json',
         }
       });
-      
+
       if (res.ok) {
         // Remove da lista
         setAlimentos(alimentos.filter(a => a.id !== selecionada.id));
@@ -77,7 +77,7 @@ export  default  function Home() {
 
   const handleEditar = async (dadosAtualizados) => {
     if (!selecionada) return;
-    
+
     try {
       const res = await fetch(`http://localhost:3005/api/alimentos/${selecionada.id}`, {
         method: 'PUT',
@@ -86,9 +86,9 @@ export  default  function Home() {
         },
         body: JSON.stringify(dadosAtualizados)
       });
-      
+
       if (res.ok) {
-        setAlimentos(alimentos.map(a => 
+        setAlimentos(alimentos.map(a =>
           a.id === selecionada.id ? dadosAtualizados : a
         ));
         setSelecionado(null);
@@ -113,12 +113,12 @@ export  default  function Home() {
           {alimentos && alimentos.map((a) => (
             <div key={a.id}>
               <CardDesktop alimento={a} onClick={() => setSelecionado(a)} />
-              <Card alimento={a} onClick={() => setSelecionado(a)}/>
+              <Card alimento={a} onClick={() => setSelecionado(a)} />
             </div>
           ))}
           <CardAdd> </CardAdd>
           {selecionada && (
-            <ModalAlimentos alimento={selecionada} onClose={() => setSelecionado(null)} OnAdd={handleAdd} OnRemove={handleRemove} OnEditar={handleEditar}/>
+            <ModalAlimentos alimento={selecionada} onClose={() => setSelecionado(null)} OnAdd={handleAdd} OnRemove={handleRemove} OnEditar={handleEditar} />
           )}
         </section>
       </main>

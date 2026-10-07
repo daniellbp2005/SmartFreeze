@@ -17,6 +17,7 @@ app.use((e, req, res, next) => {
   console.error("Erro: ", e.message);
   res.status(500).json({
     mensagem: "Falha interna do servidor",
+    erro: e.message
   });
 });
 

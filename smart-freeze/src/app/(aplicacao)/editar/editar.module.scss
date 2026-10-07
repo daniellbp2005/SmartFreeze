@@ -1,6 +1,9 @@
 @use "../../../styles/mixins" as mixins;
 @use "../../../styles/variables" as variables;
 
+.tituloCard{
+    font-family: variables.$font-grot;
+}
 
 @media (min-width: 769px){
     .main {
@@ -108,7 +111,7 @@
         @include mixins.flexCenter(column, flex-start);
         background-color: variables.$bg-primary;
         padding: 0 variables.$space-md 150px;
-        gap: variables.$space-xl;
+        gap: variables.$space-xs;
     }
 
     .tituloFiltro {
@@ -118,7 +121,7 @@
         text-align: left;
         width: 100%;
         font-family: variables.$font-body;
-        margin-bottom: variables.$space-md;
+        font-weight: 400;
     }
 
     .section {

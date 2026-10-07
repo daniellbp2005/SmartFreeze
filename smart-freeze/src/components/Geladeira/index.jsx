@@ -4,7 +4,7 @@ import { Refrigerator, PlusIcon, Trash2} from "lucide-react";
 
 export default function Card({ geladeira }) {
     return (
-        <div className={styles.card}>
+        <div className={styles.card} >
             <div className={styles.cardTitle}>
                 <div className={styles.imgCard}>
                     <Refrigerator size={24} />
