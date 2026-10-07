@@ -1,4 +1,11 @@
 import { db } from './db.js';
+
+function normalizarDataMySQL(valor) {
+  if (!valor) return valor;
+  const texto = String(valor).trim();
+  return texto.includes("T") ? texto.split("T")[0] : texto;
+}
+
 export async function filterCategory(categoria) {
     try {
         const [alimentosFiltrados] = await db.query(`
@@ -70,10 +77,11 @@ export async function listGeladeira(req, res, next) {
 export async function addAlimentos(req, res, next) {
   try {
     const { uid, nome, validade, categoria, marca , quantidade } = req.body;
+    const validadeNormalizada = normalizarDataMySQL(validade);
 
     const sql =
       "INSERT INTO alimentos ( id, uid, nome, validade, categoria, marca, quantidade) values ( default, ?, ?, ?, ?, ?, ?)";
-    const valores = [uid, nome, validade, categoria, marca, quantidade];
+    const valores = [uid, nome, validadeNormalizada, categoria, marca, quantidade];
     const [resultados] = await db.query(sql, valores); // uso valores, qnd vou enviar os dados ? no banco
     res.json({
       mensagem: "Produto criado com sucesso",
@@ -86,10 +94,11 @@ export async function addAlimentos(req, res, next) {
 export async function addGeladeira(req, res, next) {
   try {
     const { uid, nome, situacao, temperatura, marca, quantidade,manutencao } = req.body;
+    const manutencaoNormalizada = normalizarDataMySQL(manutencao);
 
     const sql =
       "INSERT INTO geladeira ( id, uid, nome, situacao, temperatura, marca, quantidade, manutencao) values ( default, ?, ?, ?, ?, ?, ?, ?)";
-    const valores = [uid, nome, situacao, temperatura, marca, quantidade,manutencao];
+    const valores = [uid, nome, situacao, temperatura, marca, quantidade, manutencaoNormalizada];
     const [resultados] = await db.query(sql, valores); // uso valores, qnd vou enviar os dados ? no banco
     res.json({
       mensagem: "Geladeira criada com sucesso",
@@ -103,10 +112,11 @@ export async function atualizarProduto(req, res, next) {
   try {
     const id = Number(req.params.id);
     const { nome, validade, categoria, marca , quantidade } = req.body;
+    const validadeNormalizada = normalizarDataMySQL(validade);
     const sql = `UPDATE alimentos 
     SET nome = ?, validade = ?, categoria = ?, marca = ?, quantidade = ?
     WHERE id = ?`;
-    const valores = [nome, validade, categoria, marca, quantidade, id];
+    const valores = [nome, validadeNormalizada, categoria, marca, quantidade, id];
     const [resultados] = await db.query(sql, valores);
     res.json({
       mensagem: "Produto atualizado com sucesso",
@@ -120,10 +130,11 @@ export async function atualizarGeladeira(req, res, next) {
   try {
     const id = Number(req.params.id);
     const { nome, situacao, temperatura, marca, quantidade, manutencao } = req.body;
+    const manutencaoNormalizada = normalizarDataMySQL(manutencao);
     const sql = `UPDATE geladeira 
     SET nome = ?, situacao = ?, temperatura = ?, marca = ?, quantidade = ?, manutencao = ?
     WHERE id = ?`;
-    const valores = [nome, situacao, temperatura, marca, quantidade, manutencao, id];
+    const valores = [nome, situacao, temperatura, marca, quantidade, manutencaoNormalizada, id];
     const [resultados] = await db.query(sql, valores);
     res.json({
       mensagem: "Geladeira atualizada com sucesso",
