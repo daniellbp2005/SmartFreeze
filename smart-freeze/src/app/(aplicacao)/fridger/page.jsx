@@ -26,7 +26,7 @@ export default function Fridger() {
             <main className={styles.main}>
                 <div className={styles.tituloFiltro}> Geladeiras</div>
                 <Filtros />
-                <section className={styles.section}>
+                <section className={styles.section} >
                     {geladeiras.map((g) => (
                         <Link key={g.id} href={`/fridger/`}>
                             <Geladeira geladeira={g}  onClick={() => setSelecionado(g)} />

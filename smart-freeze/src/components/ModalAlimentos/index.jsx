@@ -1,5 +1,5 @@
 import styles from './alimentos.module.scss';
-import {Pizza,GlassWater,Milk,Beef,AppleIcon} from "lucide-react";
+import {Carton, GlassWater, Beef, Cuboid, Apple, CircleQuestionMark} from "lucide-react";
 import { useState } from 'react';
 
 export default function ModalAlimentos({ alimento, onClose, OnAdd, OnRemove, OnEditar }) {
@@ -41,11 +41,12 @@ export default function ModalAlimentos({ alimento, onClose, OnAdd, OnRemove, OnE
                         )}
                     </div>
                     <div className={styles.ladoImg}>
-                    {alimento.categoria === "frutas" && <AppleIcon size={175} />}
-                    {alimento.categoria === "bebidas" && <GlassWater size={175} />}
-                    {alimento.categoria === "laticinios" && <Milk size={175} />}
-                    {alimento.categoria === "carnes" && <Beef size={175} />}
-                    {alimento.categoria === "outros" && <Pizza size={175} />}
+                    {alimento.categoria === "Laticínios" ? <Carton size={175} /> : null}
+                    {alimento.categoria === "Bebidas" ? <GlassWater size={175} /> : null}
+                    {alimento.categoria === "Frios" ? <Cuboid size={175} /> : null}
+                    {alimento.categoria === "Carnes" ? <Beef size={175} /> : null}
+                    {alimento.categoria === "Hortifrúti" ? <Apple size={175} /> : null}
+                    {alimento.categoria === "" ? <CircleQuestionMark size={175} /> : null}
                     </div>
                 </div>
                 <div className={styles.rowCol}>
