@@ -7,7 +7,7 @@ import ModalAlimentos from "@/components/ModalAlimentos";
 import Filtros from "@/components/Filtros";
 import { useState, useEffect } from "react";
 
-export  default  function Home() {
+export default function Home() {
   const [alimentos, setAlimentos] = useState([]);
 
   useEffect(() => {
@@ -15,21 +15,21 @@ export  default  function Home() {
       const linkAPI = await fetch("http://localhost:3005/api/alimentos");
       const data = await linkAPI.json();
       const alimentosFiltrados = Array.from(
-      new Map(data.alimentos.map(a => [a.nome, a])).values()
-    ).map(alimento => ({
-  ...alimento,
-  quantidade: data.alimentos
-    .filter(a => a.nome === alimento.nome)
-    .reduce((sum, a) => sum + Number(a.quantidade), 0)
-}));
+        new Map(data.alimentos.map(a => [a.nome, a])).values()
+      ).map(alimento => ({
+        ...alimento,
+        quantidade: data.alimentos
+          .filter(a => a.nome === alimento.nome)
+          .reduce((sum, a) => sum + Number(a.quantidade), 0)
+      }));
       setAlimentos(alimentosFiltrados ?? []);
     }
     carregarAlimentos();
   }, []);
-  const [selecionada,setSelecionado] = useState(null);
+  const [selecionada, setSelecionado] = useState(null);
   const handleAdd = async () => {
     if (!selecionada) return;
-    
+
     try {
       const res = await fetch(`http://localhost:3005/api/alimentos/${selecionada.id}`, {
         method: 'PUT',
@@ -41,9 +41,9 @@ export  default  function Home() {
           quantidade: selecionada.quantidade + 1
         })
       });
-      
+
       if (res.ok) {
-        setAlimentos(alimentos.map(a => 
+        setAlimentos(alimentos.map(a =>
           a.id === selecionada.id ? { ...a, quantidade: a.quantidade + 1 } : a
         ));
         setSelecionado(null);
@@ -55,7 +55,7 @@ export  default  function Home() {
 
   const handleRemove = async () => {
     if (!selecionada) return;
-    
+
     try {
       const res = await fetch(`http://localhost:3005/api/alimentos/${selecionada.id}`, {
         method: 'DELETE',
@@ -63,7 +63,7 @@ export  default  function Home() {
           'Content-Type': 'application/json',
         }
       });
-      
+
       if (res.ok) {
         // Remove da lista
         setAlimentos(alimentos.filter(a => a.id !== selecionada.id));
@@ -76,7 +76,7 @@ export  default  function Home() {
 
   const handleEditar = async (dadosAtualizados) => {
     if (!selecionada) return;
-    
+
     try {
       const res = await fetch(`http://localhost:3005/api/alimentos/${selecionada.id}`, {
         method: 'PUT',
@@ -85,9 +85,9 @@ export  default  function Home() {
         },
         body: JSON.stringify(dadosAtualizados)
       });
-      
+
       if (res.ok) {
-        setAlimentos(alimentos.map(a => 
+        setAlimentos(alimentos.map(a =>
           a.id === selecionada.id ? dadosAtualizados : a
         ));
         setSelecionado(null);
@@ -106,18 +106,18 @@ export  default  function Home() {
           </p>
         </div>
 
-        <Filtros/>
+        <Filtros />
 
         <section className={styles.section}>
           {alimentos && alimentos.map((a) => (
             <div key={a.id}>
               <CardDesktop alimento={a} onClick={() => setSelecionado(a)} />
-              <Card alimento={a} onClick={() => setSelecionado(a)}/>
+              <Card alimento={a} onClick={() => setSelecionado(a)} />
             </div>
           ))}
           <CardAdd />
           {selecionada && (
-            <ModalAlimentos alimento={selecionada} onClose={() => setSelecionado(null)} OnAdd={handleAdd} OnRemove={handleRemove} OnEditar={handleEditar}/>
+            <ModalAlimentos alimento={selecionada} onClose={() => setSelecionado(null)} OnAdd={handleAdd} OnRemove={handleRemove} OnEditar={handleEditar} />
           )}
         </section>
       </main>
