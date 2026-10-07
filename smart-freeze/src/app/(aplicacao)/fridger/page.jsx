@@ -25,7 +25,7 @@ export default function Fridger() {
         <>
             <main className={styles.main}>
                 <div className={styles.tituloFiltro}> Geladeiras</div>
-                <Filtros />
+                <Filtros texto={"Marcas:"} />
                 <section className={styles.section}>
                     {geladeiras.map((g) => (
                         <Link key={g.id} href={`/fridger/`}>
@@ -35,7 +35,7 @@ export default function Fridger() {
                     ))}
                     <CardAdd />
                     {selecionada && (
-                        <ModalGeladeiras geladeira={selecionada} onClose={() => setSelecionado(null)} />
+                        <ModalGeladeiras geladeira={selecionada} onClose={() => setSelecionado(null) } onMove={()=>{window.location.href=="http://localhost:3000/home"} } />
                     )}
                 </section>
             </main>

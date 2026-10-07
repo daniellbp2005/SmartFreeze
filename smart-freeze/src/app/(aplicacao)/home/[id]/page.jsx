@@ -1,7 +1,7 @@
 'use client'
 import { useParams } from "next/navigation";
 import CardDesktop from "@/components/CardDesktop";
-import styles from "./[id]/home.module.scss";
+import styles from "./home.module.scss";
 import Card from "@/components/Card";
 import CardAdd from "@/components/CardAdd";
 import ModalAlimentos from "@/components/ModalAlimentos";
@@ -39,13 +39,13 @@ export  default  function Home() {
         },
         body: JSON.stringify({
           ...selecionada,
-          quantidade: Number(selecionada.quantidade) + 1
+          quantidade: Number(selecionada.quantidade + 1)
         })
       });
       
       if (res.ok) {
         setAlimentos(alimentos.map(a => 
-          a.id === selecionada.id ? { ...a, quantidade: Number(a.quantidade) + 1 } : a
+          a.id === selecionada.id ? { ...a, quantidade: a.quantidade + 1 } : a
         ));
         setSelecionado(null);
       }

@@ -25,7 +25,7 @@ export default function CardDesktop({alimento, onClick}) {
                     </div>
                 </div>
                 <div className={styles.config}>
-                    <button className={styles.addButton}
+                    {/* <button className={styles.addButton}
                     //onClick={Add}
                     >
                         <PlusIcon size={24} />
@@ -34,7 +34,7 @@ export default function CardDesktop({alimento, onClick}) {
                     //onClick={Remove}
                     >
                         <Trash2 size={24} />
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>

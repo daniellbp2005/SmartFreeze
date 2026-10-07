@@ -1,7 +1,9 @@
 import styles from './alimentos.module.scss';
 import {Refrigerator, PlusIcon, Trash2} from "lucide-react";
+import Link from "next/link";
 
-export default function ModalAlimentos({ geladeira, onClose }) {
+
+export default function ModalAlimentos({ geladeira, onClose, onMove }) {
     return (
         <div className={styles.modal}>
             <div className={styles.conteudo}>
@@ -22,7 +24,7 @@ export default function ModalAlimentos({ geladeira, onClose }) {
                     </div>
                 </div>
                 <div className={styles.rowCol}>
-                    <button onClick={onClose}>Efetuar</button>
+                    <Link style={{width: 500}} href={'/home/'+geladeira.id}> <button onClick={onMove}>Efetuar</button></Link>
                     <button onClick={onClose}>Sair</button>
                 </div>
             </div>

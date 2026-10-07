@@ -42,8 +42,9 @@ export async function listAlimentos(req, res, next) {
     const [alimentos] = await db.query(`
       SELECT a.*, g.nome as conteiner 
       FROM alimentos a 
-      LEFT JOIN geladeira g ON a.uid = g.id
-    `);
+      LEFT JOIN geladeira g ON a.uid = g.id 
+      WHERE g.id = ?
+    `,[req]);
 
     res.json({ alimentos });
   } catch (error) {
@@ -69,10 +70,10 @@ export async function listGeladeira(req, res, next) {
 }
 export async function addAlimentos(req, res, next) {
   try {
-    const { uid, nome, validade, categoria, marca , quantidade } = req.body;
+    const { uid, nome, categoria, marca , quantidade } = req.body;
 
     const sql =
-      "INSERT INTO alimentos ( id, uid, nome, validade, categoria, marca, quantidade) values ( default, ?, ?, ?, ?, ?, ?)";
+      "INSERT INTO alimentos ( id, uid, nome, categoria, marca, quantidade) values ( default, ?, ?, ?, ?, ?)";
     const valores = [uid, nome, validade, categoria, marca, quantidade];
     const [resultados] = await db.query(sql, valores); // uso valores, qnd vou enviar os dados ? no banco
     res.json({
@@ -102,11 +103,11 @@ export async function addGeladeira(req, res, next) {
 export async function atualizarProduto(req, res, next) {
   try {
     const id = Number(req.params.id);
-    const { nome, validade, categoria, marca , quantidade } = req.body;
+    const { nome, categoria, marca , quantidade } = req.body;
     const sql = `UPDATE alimentos 
-    SET nome = ?, validade = ?, categoria = ?, marca = ?, quantidade = ?
+    SET nome = ?, categoria = ?, marca = ?, quantidade = ?
     WHERE id = ?`;
-    const valores = [nome, validade, categoria, marca, quantidade, id];
+    const valores = [nome, categoria, marca, quantidade, id];
     const [resultados] = await db.query(sql, valores);
     res.json({
       mensagem: "Produto atualizado com sucesso",
@@ -205,10 +206,3 @@ export async function authenticateUserByEmail(email, senha) {
     return null;
   }
 }
-
-// module.exports = {
-//   getDadosDoBanco,
-//   addAlimentos,
-//   atualizarProduto,
-//   deletarProduto,
-// };

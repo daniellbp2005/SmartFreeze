@@ -35,7 +35,7 @@ export default function Login() {
     const dados = {email,senha};
     
     console.log(dados);
-    router.push("/home");
+    router.push("/fridger");
   }
 
   function criarConta(e) {
