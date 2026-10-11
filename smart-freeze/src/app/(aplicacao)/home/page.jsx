@@ -11,23 +11,45 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const [alimentos, setAlimentos] = useState([]);
   const params = useParams();
+  const [filtro, setFiltro] = useState('todos');
 
   useEffect(() => {
     async function carregarAlimentos() {
-      try{
-      const linkAPI = await fetch("http://localhost:3005/api/alimentos");
-      const data = await linkAPI.json();
-      console.log(typeof data.alimentos);
-      const alimentosFiltrados = Array.isArray(data.alimentos)
-      ? data.alimentos.filter(a => a.uid == params.id)
-      : [];
-      setAlimentos(alimentosFiltrados ?? []);
-    } catch (error){
-      console.error("Erro ao carregar alimentos:", error);
-    } }
+      try {
+        const linkAPI = await fetch("http://localhost:3005/api/alimentos");
+        const data = await linkAPI.json();
+        const alimentosFiltrados = Array.isArray(data.alimentos)
+          ? data.alimentos.filter(a => a.uid == params.id)
+          : [];
+
+        if(filtro === "todos"){
+          setAlimentos(alimentosFiltrados ?? []);
+        }
+         if(filtro === "Laticínios"){
+          setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Laticínios") ?? []);
+        }
+        if(filtro === "Bebidas"){
+         setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Bebidas") ?? []);
+       }
+        if(filtro === "Frios"){
+          setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Frios") ?? []);
+        }
+         if(filtro === "Carnes"){
+          setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Carnes") ?? []);
+        }
+         if(filtro === "Hortifrúti"){
+          setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Hortifrúti" )?? []);
+        }
+        if(filtro === "Outra"){
+          setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Outra" )?? []);
+        }
+      } catch (error) {
+        console.error("Erro ao carregar alimentos:", error);
+      }
+    }
     carregarAlimentos();
-  }, [params.id]);
-  const [selecionada,setSelecionado] = useState(null);
+  }, [params.id, filtro]);
+  const [selecionada, setSelecionado] = useState(null);
   const handleAdd = async () => {
     if (!selecionada) return;
 
@@ -44,7 +66,7 @@ export default function Home() {
       });
 
       if (res.ok) {
-        setAlimentos(alimentos.map(a => 
+        setAlimentos(alimentos.map(a =>
           a.id === selecionada.id ? { ...a, quantidade: Number(a.quantidade) + 1 } : a
         ));
         setSelecionado(null);
@@ -107,7 +129,16 @@ export default function Home() {
           </p>
         </div>
 
-        <Filtros texto={"Filtre Por:"}/>
+        <Filtros texto={"Filtre Por:"}
+        todos={() => setFiltro('todos')}
+        laticinios={() => setFiltro('Laticínios')}
+        bebidas={() => setFiltro('Bebidas')}
+        frios={() => setFiltro('Frios')}
+        carnes={() => setFiltro('Carnes')}
+        hortfruti={() => setFiltro('Hortifrúti')}
+        outra={() => setFiltro('Outra')}
+
+         />
 
         <section className={styles.section}>
           {alimentos && alimentos.map((a) => (
