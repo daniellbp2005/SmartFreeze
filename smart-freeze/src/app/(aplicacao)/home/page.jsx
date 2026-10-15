@@ -16,32 +16,32 @@ export default function Home() {
   useEffect(() => {
     async function carregarAlimentos() {
       try {
-        const linkAPI = await fetch("http://localhost:3005/api/alimentos");
+        const linkAPI = await fetch("http://localhost:3005/api/alimentos/");
         const data = await linkAPI.json();
         const alimentosFiltrados = Array.isArray(data.alimentos)
-          ? data.alimentos.filter(a => a.uid == params.id)
+          ? data.alimentos.filter(a => !params.id || a.uid == params.id)
           : [];
 
-        if(filtro === "todos"){
+        if (filtro === "todos") {
           setAlimentos(alimentosFiltrados ?? []);
         }
-         if(filtro === "Laticínios"){
+        if (filtro === "Laticínios") {
           setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Laticínios") ?? []);
         }
-        if(filtro === "Bebidas"){
-         setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Bebidas") ?? []);
-       }
-        if(filtro === "Frios"){
+        if (filtro === "Bebidas") {
+          setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Bebidas") ?? []);
+        }
+        if (filtro === "Frios") {
           setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Frios") ?? []);
         }
-         if(filtro === "Carnes"){
+        if (filtro === "Carnes") {
           setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Carnes") ?? []);
         }
-         if(filtro === "Hortifrúti"){
-          setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Hortifrúti" )?? []);
+        if (filtro === "Hortifrúti") {
+          setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Hortifrúti") ?? []);
         }
-        if(filtro === "Outra"){
-          setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Outra" )?? []);
+        if (filtro === "Outra") {
+          setAlimentos(alimentosFiltrados.filter((f) => f.categoria === "Outra") ?? []);
         }
       } catch (error) {
         console.error("Erro ao carregar alimentos:", error);
@@ -130,15 +130,15 @@ export default function Home() {
         </div>
 
         <Filtros texto={"Filtre Por:"}
-        todos={() => setFiltro('todos')}
-        laticinios={() => setFiltro('Laticínios')}
-        bebidas={() => setFiltro('Bebidas')}
-        frios={() => setFiltro('Frios')}
-        carnes={() => setFiltro('Carnes')}
-        hortfruti={() => setFiltro('Hortifrúti')}
-        outra={() => setFiltro('Outra')}
+          todos={() => setFiltro('todos')}
+          laticinios={() => setFiltro('Laticínios')}
+          bebidas={() => setFiltro('Bebidas')}
+          frios={() => setFiltro('Frios')}
+          carnes={() => setFiltro('Carnes')}
+          hortfruti={() => setFiltro('Hortifrúti')}
+          outra={() => setFiltro('Outra')}
 
-         />
+        />
 
         <section className={styles.section}>
           {alimentos && alimentos.map((a) => (

@@ -3,6 +3,8 @@ import { addAlimentos, atualizarProduto, deletarProduto, listAlimentos } from ".
 
 const router = express.Router();
 
+router.get("/", listAlimentos);
+
 router.get("/:id", listAlimentos);
 
 router.post("/:id", addAlimentos);

@@ -1,5 +1,5 @@
 import styles from './alimentos.module.scss';
-import { Pizza, GlassWater, Milk, Beef, AppleIcon } from "lucide-react";
+import { Pizza, GlassWater, Milk, Beef, AppleIcon, X } from "lucide-react";
 import { useState } from 'react';
 
 export default function ModalAlimentos({ alimento, onClose, OnAdd, OnRemove, OnEditar }) {
@@ -32,20 +32,20 @@ export default function ModalAlimentos({ alimento, onClose, OnAdd, OnRemove, OnE
                     <div className={styles.ladoInfo}>
                         <h3>Descrição</h3>
                         {isEditing ? (
-                            <>
+                            <div className={styles.row}>
                                 <p><span>Marca: </span><input type="text" name="marca" value={dadosEdicao.marca} onChange={handleChange} /></p>
                                 <p><span>Categoria: </span>
-                                <select name="categoria" value={dadosEdicao.categoria} onChange={handleChange}>
-                                    <option value="">categorias</option>
-                                    <option value="frutas">Frutas</option>
-                                    <option value="bebidas">Bebidas</option>
-                                    <option value="laticinios">Laticíneos</option>
-                                    <option value="carnes">Carnes</option>
-                                    <option value="outros">Outros</option>
-                                </select></p>
+                                    <select name="categoria" value={dadosEdicao.categoria} onChange={handleChange}>
+                                        <option value="">categorias</option>
+                                        <option value="frutas">Frutas</option>
+                                        <option value="bebidas">Bebidas</option>
+                                        <option value="laticinios">Laticíneos</option>
+                                        <option value="carnes">Carnes</option>
+                                        <option value="outros">Outros</option>
+                                    </select></p>
                                 <p><span>Validade: </span><input type="date" name="validade" value={dadosEdicao.validade?.slice(0, 10) || ""} onChange={handleChange} /></p>
                                 <p><span>Quantidade: </span><input type="number" name="quantidade" value={dadosEdicao.quantidade} onChange={handleChange} /></p>
-                            </>
+                            </div>
                         ) : (
                             <>
                                 <p><span>Marca: </span>{alimento.marca}</p>
@@ -70,12 +70,14 @@ export default function ModalAlimentos({ alimento, onClose, OnAdd, OnRemove, OnE
                             <button onClick={() => setIsEditing(false)}>Cancelar</button>
                         </>
                     ) : (
-                        <>
-                            <button onClick={OnAdd}>+1 Unidade</button>
-                            <button onClick={() => setIsEditing(true)}>Editar</button>
-                            <button onClick={OnRemove}>Remover</button>
-                            <button onClick={onClose}>Sair</button>
-                        </>
+                        <div className={styles.rowBotoes}>
+                            <div className={styles.row}>
+                                <button className={styles.addButton} onClick={OnAdd}>+1 Unidade</button>
+                                <button className={styles.putButton} onClick={() => setIsEditing(true)}>Editar</button>
+                            </div>
+                            <button className={styles.deleteButton} onClick={OnRemove}>Remover</button>
+                            <button className={styles.fecharButton} onClick={onClose}><X size={15} /></button>
+                        </div>
                     )}
                 </div>
             </div>

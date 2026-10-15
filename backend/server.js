@@ -23,5 +23,4 @@ app.use((e, req, res, next) => {
 
 app.listen(port, () => {
   console.log(`Server rodadando em http://localhost:${port}`);
-
 });

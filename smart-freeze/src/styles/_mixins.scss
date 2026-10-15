@@ -19,6 +19,7 @@
     }
 }
 
+
 @mixin hoverDefaultRed($translate: $translate-y-hover-5, $shadow: $shadow-hover-red) {
     transition: $transition-default;
     &:hover {

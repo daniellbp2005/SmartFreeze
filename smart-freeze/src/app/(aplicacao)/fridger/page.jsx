@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import styles from "./fridger.module.scss";
 import Geladeira from "@/components/Geladeira";
 import GeladeiraDesktop from "@/components/CardDesktopGeladeira";
@@ -28,10 +27,10 @@ export default function Fridger() {
                 <Filtros texto={"Marcas:"} />
                 <section className={styles.section}>
                     {geladeiras.map((g) => (
-                        <Link key={g.id} href={`/fridger/`}>
+                        <div key={g.id}>
                             <Geladeira geladeira={g} onClick={() => setSelecionado(g)} />
                             <GeladeiraDesktop geladeira={g} onClick={() => setSelecionado(g)} />
-                        </Link>
+                        </div>
                     ))}
                     <CardAdd />
                     {selecionada && (

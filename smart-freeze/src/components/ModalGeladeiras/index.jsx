@@ -24,8 +24,8 @@ export default function ModalAlimentos({ geladeira, onClose, onMove }) {
                     </div>
                 </div>
                 <div className={styles.rowCol}>
-                    <Link style={{width: 500}} href={'/home/'+geladeira.id}> <button onClick={onMove}>Efetuar</button></Link>
-                    <button onClick={onClose}>Sair</button>
+                    <Link className={styles.ancora} href={'/home/'+geladeira.id}> <button className={styles.btnEfetuar} onClick={onMove}>Efetuar</button></Link>
+                    <button className={styles.btnSair} onClick={onClose}>Sair</button>
                 </div>
             </div>
         </div>

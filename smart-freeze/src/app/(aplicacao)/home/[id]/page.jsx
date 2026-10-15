@@ -11,25 +11,29 @@ import { useState, useEffect } from "react";
 export  default  function Home() {
   const [alimentos, setAlimentos] = useState([]);
   const params = useParams();
+  const [filtro, setFiltro] = useState('todos');
 
   useEffect(() => {
     async function carregarAlimentos() {
       try{
       const linkAPI = await fetch("http://localhost:3005/api/alimentos");
       const data = await linkAPI.json();
-      console.log(typeof data.alimentos);
-      const alimentosFiltrados = Array.isArray(data.alimentos)
+      const alimentosDaGeladeira = Array.isArray(data.alimentos)
       ? data.alimentos.filter(a => a.uid == params.id)
       : [];
-      setAlimentos(alimentosFiltrados ?? []);
+      const alimentosFiltrados = filtro === 'todos'
+        ? alimentosDaGeladeira
+        : alimentosDaGeladeira.filter(a => a.categoria === filtro);
+      setAlimentos(alimentosFiltrados);
     } catch (error){
       console.error("Erro ao carregar alimentos:", error);
     } }
     carregarAlimentos();
-  }, [params.id]);
+  }, [params.id, filtro]);
   const [selecionada,setSelecionado] = useState(null);
   const handleAdd = async () => {
     if (!selecionada) return;
+    const novaQuantidade = Number(selecionada.quantidade) + 1;
     
     try {
       const res = await fetch(`http://localhost:3005/api/alimentos/${selecionada.id}`, {
@@ -39,13 +43,13 @@ export  default  function Home() {
         },
         body: JSON.stringify({
           ...selecionada,
-          quantidade: Number(selecionada.quantidade + 1)
+          quantidade: novaQuantidade
         })
       });
       
       if (res.ok) {
         setAlimentos(alimentos.map(a => 
-          a.id === selecionada.id ? { ...a, quantidade: a.quantidade + 1 } : a
+          a.id === selecionada.id ? { ...a, quantidade: novaQuantidade } : a
         ));
         setSelecionado(null);
       }
@@ -107,7 +111,15 @@ export  default  function Home() {
           </p>
         </div>
 
-        <Filtros texto={"Filtre Por:"}/>
+        <Filtros texto={"Filtre Por:"}
+          todos={() => setFiltro('todos')}
+          laticinios={() => setFiltro('Laticínios')}
+          bebidas={() => setFiltro('Bebidas')}
+          frios={() => setFiltro('Frios')}
+          carnes={() => setFiltro('Carnes')}
+          hortfruti={() => setFiltro('Hortifrúti')}
+          outra={() => setFiltro('Outra')}
+        />
 
         <section className={styles.section}>
           {alimentos && alimentos.map((a) => (
