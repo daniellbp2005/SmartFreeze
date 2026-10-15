@@ -56,7 +56,7 @@ export default function Login() {
       <main className={styles.main}>
         <div className={styles.conteinerLogin}>
           <div className={styles.contentHeader}>
-            <SnowflakeIcon size={40} stroke="#131111" />
+            <SnowflakeIcon size={40} />
             <h1 className={styles.titulo}>
               {modo === "login" ? <span>Olá de novo</span> : <span>Bem vindo !</span>}
             </h1>

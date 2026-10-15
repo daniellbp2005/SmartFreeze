@@ -7,7 +7,7 @@
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(225deg, #000428 0%, #004e92 100%);
+  background: linear-gradient(225deg, var(--login-bg-start) 0%, var(--login-bg-end) 100%);
   width: 100%;
 
   .conteinerLogin {
@@ -45,11 +45,12 @@
 
       .inputContent {
         @include mixins.flexCenter(auto, center);
-        border: 0.5px solid #fff;
+        border: 0.5px solid variables.$bg-borda;
         border-radius: variables.$space-md;
         padding: variables.$space-sm variables.$space-sm;
         gap: variables.$space-xs;
-        background-color: variables.$cr-primary;
+        background-color: variables.$bg-secondary;
+        color: variables.$cr-primary;
 
         &:focus-within {
           box-shadow: 4px 6px 6px variables.$bg-primary
@@ -62,14 +63,20 @@
 
         svg {
           margin: 0 auto;
-          stroke: variables.$cr-secondary;
+          stroke: variables.$cr-primary;
         }
 
         .input {
           background-color: inherit;
+          color: variables.$cr-primary;
           border: none;
           width: 360px;
-          outline: none
+          outline: none;
+
+          &::placeholder {
+            color: variables.$text-secundary;
+            opacity: 1;
+          }
         }
       }
 

@@ -76,7 +76,14 @@ export default function ModalAlimentos({ alimento, onClose, OnAdd, OnRemove, OnE
                                 <button className={styles.putButton} onClick={() => setIsEditing(true)}>Editar</button>
                             </div>
                             <button className={styles.deleteButton} onClick={OnRemove}>Remover</button>
-                            <button className={styles.fecharButton} onClick={onClose}><X size={15} /></button>
+                            <button
+                                type="button"
+                                className={styles.fecharButton}
+                                onClick={onClose}
+                                aria-label="Fechar"
+                            >
+                                <X size={15} />
+                            </button>
                         </div>
                     )}
                 </div>

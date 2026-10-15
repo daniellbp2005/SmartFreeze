@@ -21,6 +21,8 @@
 
     body.escuro {
         color-scheme: dark; // info ao navegador que o site tem modo escuro
+        --login-bg-start: #000428;
+        --login-bg-end: #004e92;
 
         --bg-primary: #171810;
         --bg-secondary: #2a2a2a;
@@ -37,6 +39,8 @@
 
     body.claro {
         color-scheme: light; // info ao navegador que o site tem modo claro
+        --login-bg-start: #eaf6ff;
+        --login-bg-end: #b8dced;
 
         --bg-primary:aliceblue;
         --bg-secondary: rgb(188, 206, 221);

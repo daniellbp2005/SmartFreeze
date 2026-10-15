@@ -65,6 +65,7 @@
             border-radius: 50%;
             padding: variables.$space-xs;
             cursor: pointer;
+            font-family: variables.$font-body;
 
             svg {
                 stroke: variables.$cr-primary;

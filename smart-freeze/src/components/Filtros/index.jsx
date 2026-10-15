@@ -49,7 +49,7 @@ export default function Filtros({ texto,
                 <ul>
                     <ul>
                         {pathname === "/home" || pathname.startsWith("/home/")
-                            ? (<li onClick={todos}>Todos</li>)
+                            ? (<li style={{color: "#fff"}} onClick={todos}>Todos</li>)
                             : null
                         }
                         {cat.map((item, index) => (
@@ -58,7 +58,7 @@ export default function Filtros({ texto,
                                 // Caso a geladeira mude assim o filtro funciona
                                 ? (<li key={`${item}-${index}`} style={{ color: '#fff' }}
                                     onClick={acoesPorCategoria[item]} >{item}</li>)
-                                : (<li key={`${item}-${index}`}>{item}</li>))
+                                : (<li key={`${item}-${index}`} style={{ color: '#fff' }}>{item}</li>))
                         )
                         }
                     </ul>

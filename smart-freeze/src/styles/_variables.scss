@@ -20,7 +20,7 @@ $text-secundary: var(--text-secundary);
 // Fontes
 $font-heading: "Playfair Display", serif;
 $font-subtitle: "Montserrat", sans-serif;
-$font-body: "Inter", sans-serif;
+$font-body: var(--font-inter), sans-serif;
 $font-ui: "Open Sans", sans-serif;
 $font-grot: "Space Grotesk", sans-serif;
 

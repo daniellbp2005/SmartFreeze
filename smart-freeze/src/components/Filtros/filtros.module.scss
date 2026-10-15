@@ -2,7 +2,11 @@
 @use "../../styles/variables" as variables;
 
   .filtro {
-    @include mixins.flexCenter(row, flex-start);
+    text-align: left;
+    display: flex;
+    justify-content: flex-start !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
     color: variables.$cr-primary;
     gap: variables.$space-sm;
 

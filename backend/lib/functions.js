@@ -45,13 +45,12 @@ export async function getDadosDoBanco(req, res, next) {
 }
 export async function listAlimentos(req, res, next) {
   try {
-  
-    const [alimentos] = await db.query(`
-      SELECT a.*, g.nome as conteiner 
-      FROM alimentos a 
-      LEFT JOIN geladeira g ON a.uid = g.id 
-      WHERE g.id = ?
-    `,[req]);
+    const uid = req.params?.id;
+    const sql = uid
+      ? "SELECT a.* FROM alimentos a WHERE a.uid = ?"
+      : "SELECT a.* FROM alimentos a";
+    const valores = uid ? [uid] : [];
+    const [alimentos] = await db.query(sql, valores);
 
     res.json({ alimentos });
   } catch (error) {

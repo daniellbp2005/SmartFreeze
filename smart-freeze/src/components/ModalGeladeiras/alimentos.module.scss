@@ -85,6 +85,7 @@
     @include mixins.flexCenter(row, center);
     gap: variables.$space-sm;
     width: 100%;
+    font-family: variables.$font-body !important;
 
     button {
       width: 100%;
@@ -93,10 +94,17 @@
       padding: variables.$space-md;
       color: variables.$cr-primary;
       font-size: variables.$fs-text;
+      font-family: variables.$font-body !important;
+    }
+
+    .btnEfetuar{
+      background-color: variables.$cr-acao;
+      @include mixins.hoverDefault()
     }
 
     .btnSair {
       background-color: variables.$cr-danger;
+      @include mixins.hoverDefaultRed()
     }
 
     a {

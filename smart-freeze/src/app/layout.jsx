@@ -1,10 +1,17 @@
-import {Space_Grotesk} from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.scss";
+import InicializarTema from "./inicializarTema";
 
 
 const space = Space_Grotesk({
   subsets: ['latin'],
   weight: ['300','400','500','600','700'],
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-inter',
 })
 
 export const metadata = {
@@ -14,8 +21,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-br" className={`${space.variable}`}>
+    <html lang="pt-br" className={`${space.variable} ${inter.variable}`}>
       <body>
+        <InicializarTema />
         {children}
       </body>
     </html>

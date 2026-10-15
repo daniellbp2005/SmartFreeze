@@ -12,30 +12,32 @@ export default function Config() {
                 <div className={styles.tituloFiltro}> Configurações</div>
                 <section className={styles.section}>
                     <div className={styles.card}>
-                        <CircleUserRound size={50}/>
+                        <CircleUserRound size={50} />
                         <Link href="/editar">
-                        <div className={styles.tituloCard}>
-                            <h3>Editar Perfil</h3>
-                            <p>Edite as informações do perfil</p>
-                        </div>
+                            <div className={styles.tituloCard}>
+                                <h3>Editar Perfil</h3>
+                                <p>Edite as informações do perfil</p>
+                            </div>
                         </Link>
                     </div>
                     <BotaoTema />
                     <div className={styles.card}>
-                        <ArrowLeftRight size={50}/>
-                        <div className={styles.tituloCard}>
-                            <h3>Trocar Geladeira</h3>
-                            <p>Altere a geladeira em uso</p>
-                        </div>
+                            <ArrowLeftRight size={50} />
+                        <Link href={"/fridger"}>
+                            <div className={styles.tituloCard}>
+                                <h3>Trocar Geladeira</h3>
+                                <p>Altere a geladeira em uso</p>
+                            </div>
+                        </Link>
                     </div>
                     <Link href={"/"}>
-                    <div className={styles.logoutMobile}>
-                        <LogOut size={50}/>
-                        <div className={styles.tituloCard}>
-                            <h3>Sair</h3>
-                            <p>Saia da sua conta</p>
+                        <div className={styles.logoutMobile}>
+                            <LogOut size={50} />
+                            <div className={styles.tituloCard}>
+                                <h3>Sair</h3>
+                                <p>Saia da sua conta</p>
+                            </div>
                         </div>
-                    </div>
                     </Link>
                 </section>
             </main>

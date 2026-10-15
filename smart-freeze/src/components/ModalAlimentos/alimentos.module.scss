@@ -210,12 +210,19 @@
       .fecharButton {
         position: absolute;
         background-color: variables.$cr-danger;
-        width: fit-content;
-        padding: 6px 8px;
-        top: 8;
-        right: 8;
+        display: grid;
+        place-items: center;
+        flex: 0 0 44px;
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+        min-height: 44px;
+        padding: 0;
+        top: 8px;
+        right: 8px;
         border: .5px solid variables.$bg-borda;
-        @include mixins.hoverDefaultRed()
+        border-radius: 50%;
+        // @include mixins.hoverDefaultRed()
       }
     }
   }
@@ -317,6 +324,16 @@
         padding: variables.$space-md;
         font-size: variables.$fs-text;
          font-family: variables.$font-body;
+      }
+
+      .rowBotoes .fecharButton {
+        flex: 0 0 44px;
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+        min-height: 44px;
+        padding: 0;
+        border-radius: 50%;
       }
     }
   }
