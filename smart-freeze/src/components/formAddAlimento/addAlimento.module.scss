@@ -1,0 +1,325 @@
+@use "../../styles/mixins" as mixins;
+@use "../../styles/variables" as variables;
+
+.card {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+
+}
+
+.textContent {
+    @include mixins.flexCenter(column, space-between);
+    background: variables.$bg-secondary;
+    border: .5 solid variables.$cr-vip;
+    border-radius: variables.$radius-md;
+    padding: 24px;
+    border-radius: 12px;
+    color: variables.$cr-primary;
+    gap: variables.$space-sm;
+    font-size: variables.$fs-subtitle-sub;
+    font-family: variables.$font-grot;
+    font-weight: 500;
+    height: auto;
+    min-height: 27rem;
+    position: relative;
+    width: 500px;
+
+    h3 {
+        margin-top: variables.$space-sm;
+        font-size: 40px
+    }
+
+    .row {
+
+        @include mixins.flexCenter(column, flex-start);
+        width: 100%;
+        font-size: variables.$fs-subtitle-sub;
+        font-family: variables.$font-grot;
+        font-weight: 800;
+
+        p {
+            width: 100%;
+            text-align: left
+        }
+    }
+
+    .body {
+        @include mixins.flexCenter(column, space-between);
+        width: 100%;
+        text-align: left;
+        gap: variables.$space-sm;
+
+        .ladoInfo {
+            @include mixins.flexCenter(column, center, flex-start);
+            width: 100%;
+            //   padding: variables.$space-md;
+
+            h3 {
+                font-weight: 800;
+                margin-bottom: variables.$space-sm;
+            }
+
+            p {
+                span {
+                    font-weight: 500;
+                }
+
+                font-weight: 300;
+                width: 100%;
+                text-align: left;
+            }
+
+            .row {
+                align-items: stretch;
+                gap: variables.$space-sm;
+
+                p {
+                    display: flex;
+                    flex-direction: column;
+                    gap: variables.$space-xs;
+                    margin: 0;
+
+                    span {
+                        color: variables.$cr-primary;
+                        font-size: variables.$fs-small;
+                        font-weight: 600;
+                    }
+                }
+            }
+
+
+            input,
+            select {
+                display: block;
+                width: 100%;
+                min-height: 44px;
+                padding: variables.$space-sm variables.$space-md;
+                color: variables.$cr-primary;
+                background-color: variables.$bg-primary;
+                border: variables.$border-sm solid variables.$bg-borda;
+                border-radius: variables.$radius-sm;
+                font-family: variables.$font-body;
+                font-size: variables.$fs-text;
+                cursor: pointer;
+                transition: border-color variables.$transition-fast, box-shadow variables.$transition-fast;
+
+                &:hover {
+                    border-color: variables.$cr-acao;
+                }
+
+                &:focus-visible {
+                    outline: 2px solid variables.$cr-acao;
+                    outline-offset: 2px;
+                }
+            }
+
+            select {
+                option {
+                    color: variables.$cr-primary;
+                    background-color: variables.$bg-secondary;
+                }
+            }
+        }
+
+        .ladoImg {
+            flex: 1;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .rowCol {
+        @include mixins.flexCenter(row, center);
+        gap: variables.$space-sm;
+        width: 100%;
+        margin-top: variables.$space-md;
+
+        .cancelar {
+            background-color: variables.$cr-danger;
+            @include mixins.hoverDefaultRed()
+        }
+
+        .submit {
+            background-color: variables.$cr-acao;
+            @include mixins.hoverDefault()
+        }
+
+        button {
+            flex: unset;
+            width: 100%;
+            min-height: 44px;
+            padding: variables.$space-sm variables.$space-md;
+            border: none;
+            border-radius: variables.$radius-sm;
+            color: variables.$cr-primary;
+            font-family: variables.$font-grot;
+            font-size: variables.$fs-text;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform variables.$transition-fast, box-shadow variables.$transition-fast;
+
+            &:first-of-type {
+                background-color: variables.$cr-danger;
+            }
+
+            &:last-of-type {
+                background-color: variables.$cr-acao;
+            }
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: variables.$shadow-card;
+            }
+
+            &:focus-visible {
+                outline: 2px solid variables.$cr-primary;
+                outline-offset: 2px;
+            }
+        }
+
+        .rowBotoes {
+            @include mixins.flexCenter(column, center);
+            gap: variables.$space-sm;
+            width: 100%;
+
+            .row {
+                @include mixins.flexCenter(row, center);
+                gap: variables.$space-sm;
+                width: 100%;
+            }
+
+            button {
+                flex: 1;
+                border: none;
+                border-radius: variables.$space-sm;
+                padding: variables.$space-md;
+                color: variables.$cr-primary;
+                font-size: variables.$fs-text;
+            }
+
+        }
+    }
+
+}
+
+@media (max-width: 768px) {
+    .textContent {
+        min-width: 80%;
+        max-width: 90%;
+        height: auto;
+        min-height: 27rem;
+        padding: variables.$space-sm;
+
+        .row {
+            // padding: 20px;
+
+            h2 {
+                font-size: 40px;
+            }
+        }
+
+
+        .body {
+            @include mixins.flexCenter(column, flex-end);
+            width: 100%;
+            height: 20rm;
+            text-align: left;
+            gap: variables.$space-sm;
+            padding: 20px;
+
+            &:has(.ladoInfo input) {
+                flex-direction: column;
+                align-items: stretch;
+                height: auto;
+                padding: 0;
+
+                .ladoImg {
+                    display: none;
+                }
+
+                .ladoInfo {
+                    width: 100%;
+                }
+            }
+
+            .ladoInfo {
+                @include mixins.flexCenter(column, center, flex-start);
+                width: 100%;
+                padding: 0 variables.$space-md;
+
+                h3 {
+                    font-weight: 800;
+                    margin-bottom: variables.$space-sm;
+                }
+
+                p {
+                    span {
+                        font-weight: 500;
+                    }
+
+                    font-weight: 300;
+                    width: 100%;
+                    text-align: left;
+                }
+
+                select {
+                    min-height: 46px;
+                    font-size: 16px;
+                }
+
+                input {
+                    min-height: 46px;
+                    font-size: 16px;
+                }
+            }
+
+            .ladoImg {
+                flex: 1;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .rowCol {
+            @include mixins.flexCenter(column, center);
+            gap: variables.$space-sm;
+            margin-top: variables.$space-md;
+            padding: variables.$space-md;
+
+
+            button {
+                flex: none;
+                min-height: 46px;
+            }
+
+            button {
+                width: 100%;
+                border-radius: variables.$space-sm;
+                padding: variables.$space-md;
+                font-size: variables.$fs-text;
+                font-family: variables.$font-body;
+            }
+
+            .rowBotoes .fecharButton {
+                flex: 0 0 44px;
+                width: 44px;
+                min-width: 44px;
+                height: 44px;
+                min-height: 44px;
+                padding: 0;
+                border-radius: 50%;
+            }
+        }
+    }
+}

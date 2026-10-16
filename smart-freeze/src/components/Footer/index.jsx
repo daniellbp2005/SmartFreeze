@@ -3,14 +3,23 @@ import styles from "./footer.module.scss";
 import { Refrigerator, House, Settings, UserRound } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import FormAddAlimento from "../formAddAlimento";
 
 export default function Footer() {
   const pathername = usePathname();
+  const [abrirForm, setAbrirForm] = useState(false);
+
   return (
     <>
-      <button className={styles.addProduto} style={{color: '#fff'}} >
+      <button className={styles.addProduto} style={{ color: '#fff' }} onClick={() => setAbrirForm(true)}>
         <p>Adicionar Produto +</p>
       </button>
+
+      {abrirForm && (
+        <FormAddAlimento onClose={() => setAbrirForm(false)} />
+      )}
+
       <footer className={styles.tabBar}>
         <div className={`${styles.col}  ${pathername === "/home" ? styles.active : ""}`}>
           <div className={`${styles.tabItem}`}>

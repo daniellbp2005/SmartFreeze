@@ -7,11 +7,13 @@ import CardAdd from "@/components/CardAdd";
 import ModalAlimentos from "@/components/ModalAlimentos";
 import Filtros from "@/components/Filtros";
 import { useState, useEffect } from "react";
+import FormAddAlimento from "@/components/formAddAlimento";
 
 export default function Home() {
   const [alimentos, setAlimentos] = useState([]);
   const params = useParams();
   const [filtro, setFiltro] = useState('todos');
+  // const [add, setAdd] = useState(null)
 
   useEffect(() => {
     async function carregarAlimentos() {
@@ -147,7 +149,7 @@ export default function Home() {
               <Card alimento={a} onClick={() => setSelecionado(a)} />
             </div>
           ))}
-          <CardAdd> </CardAdd>
+          <CardAdd onClick={(a) => setSelecionado(a)} />
           {selecionada && (
             <ModalAlimentos alimento={selecionada} onClose={() => setSelecionado(null)} OnAdd={handleAdd} OnRemove={handleRemove} OnEditar={handleEditar} />
           )}

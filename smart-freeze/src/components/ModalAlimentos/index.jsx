@@ -1,5 +1,5 @@
 import styles from './alimentos.module.scss';
-import { Pizza, GlassWater, Milk, Beef, AppleIcon, X } from "lucide-react";
+import { GlassWater, Carton, Apple, Milk, Beef, AppleIcon, Cuboid, X, CircleQuestionMark } from "lucide-react";
 import { useState } from 'react';
 
 export default function ModalAlimentos({ alimento, onClose, OnAdd, OnRemove, OnEditar }) {
@@ -32,16 +32,19 @@ export default function ModalAlimentos({ alimento, onClose, OnAdd, OnRemove, OnE
                     <div className={styles.ladoInfo}>
                         <h3>Descrição</h3>
                         {isEditing ? (
+
                             <div className={styles.row}>
+
                                 <p><span>Marca: </span><input type="text" name="marca" value={dadosEdicao.marca} onChange={handleChange} /></p>
                                 <p><span>Categoria: </span>
                                     <select name="categoria" value={dadosEdicao.categoria} onChange={handleChange}>
-                                        <option value="">categorias</option>
-                                        <option value="frutas">Frutas</option>
-                                        <option value="bebidas">Bebidas</option>
-                                        <option value="laticinios">Laticíneos</option>
-                                        <option value="carnes">Carnes</option>
-                                        <option value="outros">Outros</option>
+                                        <option value="">Selecione</option>
+                                        <option value="Hortifrúti">Frutas</option>
+                                        <option value="Bebidas">Bebidas</option>
+                                        <option value="Frios">Frios</option>
+                                        <option value="Laticínios">Laticínios</option>
+                                        <option value="Carnes">Carnes</option>
+                                        <option value="Outros">Outros</option>
                                     </select></p>
                                 <p><span>Validade: </span><input type="date" name="validade" value={dadosEdicao.validade?.slice(0, 10) || ""} onChange={handleChange} /></p>
                                 <p><span>Quantidade: </span><input type="number" name="quantidade" value={dadosEdicao.quantidade} onChange={handleChange} /></p>
@@ -55,12 +58,13 @@ export default function ModalAlimentos({ alimento, onClose, OnAdd, OnRemove, OnE
                             </>
                         )}
                     </div>
-                    <div className={styles.ladoImg}>
-                        {alimento.categoria === "frutas" && <AppleIcon size={175} />}
-                        {alimento.categoria === "bebidas" && <GlassWater size={175} />}
-                        {alimento.categoria === "laticinios" && <Milk size={175} />}
-                        {alimento.categoria === "carnes" && <Beef size={175} />}
-                        {alimento.categoria === "outros" && <Pizza size={175} />}
+                    <div className={styles.ladoImg} style={{ display: isEditing ? 'none' : 'block' }}>
+                        {alimento.categoria === "Laticínios" ? <Carton size={175} /> : null}
+                        {alimento.categoria === "Bebidas" ? <GlassWater size={175} /> : null}
+                        {alimento.categoria === "Frios" ? <Cuboid size={175} /> : null}
+                        {alimento.categoria === "Carnes" ? <Beef size={175} /> : null}
+                        {alimento.categoria === "Hortifrúti" ? <Apple size={175} /> : null}
+                        {alimento.categoria === "Outros" ? <CircleQuestionMark size={175} /> : null}
                     </div>
                 </div>
                 <div className={styles.rowCol}>

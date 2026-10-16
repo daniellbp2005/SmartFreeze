@@ -8,7 +8,6 @@
     border-radius: variables.$radius-sm;
     @include mixins.hoverDefault();
     @include mixins.flexCenter(row, flex-start);
-
     svg {
         height: 100%;
         flex: 1;

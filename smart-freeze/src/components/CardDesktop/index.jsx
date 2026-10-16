@@ -1,5 +1,5 @@
 import styles from "./cardDesktop.module.scss";
-import { PlusIcon, Trash2, Carton, GlassWater, Beef, Cuboid, Apple, CircleQuestionMark} from "lucide-react";
+import { PlusIcon, Trash2, Carton, GlassWater, Beef, Cuboid, Apple, CircleQuestionMark } from "lucide-react";
 
 
 export default function CardDesktop({ alimento, onClick }) {
@@ -13,7 +13,7 @@ export default function CardDesktop({ alimento, onClick }) {
                     {alimento.categoria === "Frios" ? <Cuboid size={24} /> : null}
                     {alimento.categoria === "Carnes" ? <Beef size={24} /> : null}
                     {alimento.categoria === "Hortifrúti" ? <Apple size={24} /> : null}
-                    {alimento.categoria === "Outra" ? <CircleQuestionMark size={24} /> : null}
+                    {alimento.categoria === "Outros" ? <CircleQuestionMark size={24} /> : null}
                 </div>
             </div>
             <div className={styles.textContent}>

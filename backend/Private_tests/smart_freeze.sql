@@ -26,6 +26,6 @@ categoria varchar(255),
 validade date,
 marca varchar(255),
 quantidade numeric,
-foto varchar(1000),
+foto varchar(1000) default "https://sem_foto",
 constraint fk_alimento foreign key (uid) references usuario(id)
 );

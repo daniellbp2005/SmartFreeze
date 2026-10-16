@@ -76,11 +76,11 @@ export async function listGeladeira(req, res, next) {
 }
 export async function addAlimentos(req, res, next) {
   try {
-    const { uid, nome, categoria, marca , quantidade } = req.body;
+    const { uid, nome, categoria, marca , quantidade, validade } = req.body;
 
     const sql =
-      "INSERT INTO alimentos ( id, uid, nome, categoria, marca, quantidade) values ( default, ?, ?, ?, ?, ?)";
-    const valores = [uid, nome, validade, categoria, marca, quantidade];
+      "INSERT INTO alimentos ( uid, nome, categoria, marca, quantidade, validade) values (?, ?, ?, ?, ?, ?)";
+    const valores = [uid, nome, categoria, marca, quantidade, validade];
     const [resultados] = await db.query(sql, valores); // uso valores, qnd vou enviar os dados ? no banco
     res.json({
       mensagem: "Produto criado com sucesso",

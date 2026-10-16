@@ -7,7 +7,7 @@ router.get("/", listAlimentos);
 
 router.get("/:id", listAlimentos);
 
-router.post("/:id", addAlimentos);
+router.post("/", addAlimentos);
 
 router.put("/:id", atualizarProduto);
 

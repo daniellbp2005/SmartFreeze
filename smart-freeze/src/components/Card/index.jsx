@@ -1,39 +1,39 @@
 import styles from "./card.module.scss";
-import { PlusIcon, Trash2, Carton, GlassWater, Beef, Cuboid, Apple, CircleQuestionMark} from "lucide-react";
+import { PlusIcon, Trash2, Carton, GlassWater, Beef, Cuboid, Apple, CircleQuestionMark } from "lucide-react";
 
 
 export default function Card({ alimento, onClick }) {
     return (
-            <div className={styles.card} onClick={onClick}>
-                <div className={styles.cardTitle}>
-                    <div className={styles.imgCard}>
-                        {alimento.categoria === "Laticínios" ? <Carton size={24} /> : null}
-                        {alimento.categoria === "Bebidas" ? <GlassWater size={24} /> : null}
-                        {alimento.categoria === "Frios" ? <Cuboid size={24} /> : null}
-                        {alimento.categoria === "Carnes" ? <Beef size={24} /> : null}
-                        {alimento.categoria === "Hortifrúti" ? <Apple size={24} /> : null}
-                        {alimento.categoria === "" ? <CircleQuestionMark size={24} /> : null}
-                    </div>
-                    <div className={styles.tituloCard}>
-                        <h3>{alimento?.nome[0]?.toUpperCase() + alimento.nome.substring(1) || "Nome do Alimento"}</h3>
-                        <p>
-                            Unidades: <span>{alimento?.quantidade || 0}</span>
-                        </p>
-                    </div>
+        <div className={styles.card} onClick={onClick}>
+            <div className={styles.cardTitle}>
+                <div className={styles.imgCard}>
+                    {alimento.categoria === "Laticínios" ? <Carton size={24} /> : null}
+                    {alimento.categoria === "Bebidas" ? <GlassWater size={24} /> : null}
+                    {alimento.categoria === "Frios" ? <Cuboid size={24} /> : null}
+                    {alimento.categoria === "Carnes" ? <Beef size={24} /> : null}
+                    {alimento.categoria === "Hortifrúti" ? <Apple size={24} /> : null}
+                    {alimento.categoria === "Outros" ? <CircleQuestionMark size={24} /> : null}
                 </div>
-                <div className={styles.config}>
-                    <button className={styles.addButton}
-                    // onClick={Add}
-                    >
-                        <PlusIcon size={24} />
-                    </button>
-                    <button className={styles.deleteButton}
-                    // onClick={Remove}
-                    >
-                        <Trash2 size={24} />
-                    </button>
+                <div className={styles.tituloCard}>
+                    <h3>{alimento?.nome[0]?.toUpperCase() + alimento.nome.substring(1) || "Nome do Alimento"}</h3>
+                    <p>
+                        Unidades: <span>{alimento?.quantidade || 0}</span>
+                    </p>
                 </div>
             </div>
+            <div className={styles.config}>
+                <button className={styles.addButton}
+                // onClick={Add}
+                >
+                    <PlusIcon size={24} />
+                </button>
+                <button className={styles.deleteButton}
+                // onClick={Remove}
+                >
+                    <Trash2 size={24} />
+                </button>
+            </div>
+        </div>
     );
 }
 
